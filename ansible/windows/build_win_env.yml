@@ -1,0 +1,17 @@
+---
+##############################################################
+## Build Windows domain environment for Adversary Emulation ##
+##############################################################
+
+## PRE TASKS
+
+## TASKS
+
+# Playbook: Creation and configuration of domain
+# Installs and configures a new Active Directory forest and domain,
+# configures users and groups
+- import_playbook: make_domain.yml
+
+# Playbook: Join member servers and clients to the domain
+# Configures a server or client so it can be joined to the domain
+- import_playbook: join_domain.yml

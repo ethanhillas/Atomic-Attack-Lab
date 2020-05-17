@@ -1,0 +1,49 @@
+---
+- hosts: dc
+  gather_facts: no
+  vars:
+    domain_admin_user: win_da
+    domain_admin_password: "da_password123!"
+    dc_hostname: 'dc01'
+    domain_name: "demo.lab"
+    domain_safe_mode_password: "Password123!"
+  tasks:
+  - name: Change the hostname 
+    win_hostname:
+      name: '{{ dc_hostname }}'
+    register: reboot
+
+  - name: Reboot after changing hostname
+    win_reboot:
+    when: reboot.reboot_required
+
+  - name: Install Active Directory
+    win_feature:
+      name: AD-Domain-Services
+      include_management_tools: yes
+      include_sub_features: yes
+      state: present
+
+  - name: Create new Windows domain in a new forest with specific parameters
+    win_domain:
+      dns_domain_name: "{{ domain_name }}"
+      safe_mode_password: "{{ domain_safe_mode_password }}"
+    register: domain_install
+
+  - name: Reboot after domain creation
+    win_reboot:
+    when: domain_install.reboot_required
+
+  - name: Wait for DC to be ready
+    wait_for:
+      timeout: 300
+
+  - name: Add DA account
+    win_domain_user:
+      name: "{{ domain_admin_user }}"
+      firstname: win
+      surname: da
+      password: "{{ domain_admin_password }}"
+      state: present
+      groups:
+        - Domain Admins

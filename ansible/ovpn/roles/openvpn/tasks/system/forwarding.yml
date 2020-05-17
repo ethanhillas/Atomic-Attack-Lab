@@ -1,0 +1,27 @@
+---
+
+- name: Set ip forwarding in the sysctl file and reload if necessary
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    sysctl_set: true
+    state: present
+    reload: true
+
+#- name: Set UFW DEFAULT_FORWARD_POLICY=ACCEPT
+#  ufw: 
+#    direction: routed
+#    default: allow
+#    route: yes
+#  notify: reload ufw
+
+# - name: Add postrouting masquerade rule to iptables 
+#   blockinfile:
+#     path: /etc/ufw/before.rules
+#     insertafter: "^#   ufw-before-forward"
+#     block: |
+#       *nat
+#       :POSTROUTING ACCEPT [0:0]
+#       -A POSTROUTING -s 10.0.1.8/29 -o eth0 -j MASQUERADE
+#       COMMIT
+#   notify: reload ufw settings

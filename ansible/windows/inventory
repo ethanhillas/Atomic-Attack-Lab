@@ -1,0 +1,13 @@
+[dc]
+ec2-52-62-91-59.ap-southeast-2.compute.amazonaws.com ansible_host=52.62.91.59 ansible_user=Administrator ansible_password=mgvEU.zO*(xFgRywXBLUnKOB3kit-?vY
+
+[ms]
+ec2-13-211-202-253.ap-southeast-2.compute.amazonaws.com ansible_host=13.211.202.253 ansible_user=Administrator ansible_password=C2fEsv%fCeTnL?gojEtE=ErBkN!SlbF8
+
+[win:children]
+dc
+ms
+
+[win:vars]
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore

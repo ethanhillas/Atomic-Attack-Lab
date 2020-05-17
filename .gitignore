@@ -1,0 +1,16 @@
+PLAN
+TODO
+
+# ansible
+ansible/*/certs
+
+# terraform
+terraform/*/certs
+.terraform
+*.tfstate*
+terraform.tfvars
+bootstrap-secrets.json
+.DS_Store
+
+# python
+__pycache__

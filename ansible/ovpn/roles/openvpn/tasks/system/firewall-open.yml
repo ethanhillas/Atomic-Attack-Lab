@@ -1,0 +1,23 @@
+---
+
+- name: Allow connections to the OpenVPN server
+  iptables:
+    chain: INPUT
+    in_interface: "{{ openvpn_out_interface | default(omit, true) }}"
+    ctstate: NEW
+    protocol: "{{ openvpn_proto }}"
+    destination_port: "{{ openvpn_port }}"
+    jump: ACCEPT
+    comment: incoming_openvpn
+  notify: openvpn save iptables
+  when: iptables_rules.stdout.find("incoming_openvpn") == -1
+
+- name: Allow new incoming SYN packets on TCP port 22 (SSH).
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: '22'
+    ctstate: NEW
+    syn: match
+    jump: ACCEPT
+    comment: Accept new SSH connections.
