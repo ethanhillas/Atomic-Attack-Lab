@@ -5,3 +5,7 @@ output "nat_gateway" {
 output "ovpn" {
   value = aws_instance.ovpn
 }
+
+output "ovpn_eip" {
+  value = aws_eip.ovpn_eip
+}

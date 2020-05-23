@@ -158,7 +158,7 @@ resource "aws_instance" "DC" {
   key_name = var.int_public_key.key_name
 
 
-  user_data = file("./utils/user_data.txt")
+  user_data = file("./utils/user_data.txt") # this is actually relative to where terraform is called from
   get_password_data = true
 
   vpc_security_group_ids = [
@@ -168,7 +168,7 @@ resource "aws_instance" "DC" {
   ]
 
   tags = {
-    Name = "Win-server-DC${var.project_name}"
+    Name = "Win-server-DC-${var.project_name}"
     project_name = var.project_name
     managed-by = var.managed_by   
   }
@@ -185,7 +185,7 @@ resource "aws_instance" "MS" {
 
   key_name = var.int_public_key.key_name
 
-  user_data = file("./utils/user_data.txt")
+  user_data = file("./utils/user_data.txt") # this is actually relative to where terraform is called from
   get_password_data = true
 
   vpc_security_group_ids = [
@@ -195,7 +195,7 @@ resource "aws_instance" "MS" {
   ]
 
   tags = {
-    Name = "Win-server-MS${var.project_name}"
+    Name = "Win-server-MS-${var.project_name}"
     project_name = var.project_name
     managed-by = var.managed_by   
   }

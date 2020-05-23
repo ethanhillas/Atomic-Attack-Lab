@@ -1,0 +1,4 @@
+---
+# Domain variables
+domain_name: testlab.local
+domain_safe_mode_password: Password123!

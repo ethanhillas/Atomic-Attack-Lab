@@ -1,0 +1,5 @@
+---
+# From splunk attack_range
+
+- include: set_ansible_user.yml
+- include: install_domain_controller.yml

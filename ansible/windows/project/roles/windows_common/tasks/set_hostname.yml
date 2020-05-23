@@ -1,0 +1,10 @@
+---
+
+- name: Change the hostname
+  win_hostname:
+    name: "{{ hostname }}"
+  register: hostname_changed
+
+- name: reboot | Hostname changed
+  win_reboot:
+  when: hostname_changed.reboot_required

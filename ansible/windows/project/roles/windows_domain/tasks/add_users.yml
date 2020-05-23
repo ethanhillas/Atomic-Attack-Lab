@@ -1,0 +1,10 @@
+---
+# Populate domain users
+
+- name: Add domain users
+  win_domain_user:
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    groups: "{{ item.groups }}"
+    groups_action: add
+  loop: "{{ domain_users }}"

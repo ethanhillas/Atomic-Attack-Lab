@@ -1,0 +1,20 @@
+---
+# Easy_rsa mysql_variables
+easyrsa_generate_dh: true
+easyrsa_servers:
+  - name: server
+    cn: "{{ inventory_hostname }}"
+easyrsa_clients:
+  - name: client1
+  - name: client2
+  - name: client3
+  - name: client4
+  - name: client5
+  - name: client6
+easyrsa_pki_dir: /etc/easyrsa/pki
+easyrsa_conf_req_country: test
+easyrsa_conf_req_province: test
+easyrsa_conf_req_city: test
+easyrsa_conf_req_org: test
+easyrsa_conf_req_email: s
+easyrsa_conf_req_ou: sa

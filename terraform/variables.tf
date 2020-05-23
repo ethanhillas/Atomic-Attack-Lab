@@ -19,6 +19,14 @@ variable "managed_by" {
   description = "Identifying tag for all terraform managed instances"
 }
 
+variable "ovpn_ansible_hosts_file" {
+  description = "relative location of the ovpn ansible inventory file"
+}
+
+variable "windows_ansible_hosts_file" {
+  description = "relative location of the windows ansible inventory file"
+}
+
 #############
 ## Modules ##
 #############
@@ -62,6 +70,9 @@ variable "trusted_network" {
   description = "CIDR of trusted networks allowed to connect to OVPN server"
 }
 
+variable "private_key_path" {
+  description = "Used for remote-exec - TESTING"
+}
 
 ## attacker ##
 variable "attacker_subnet_cidr" {

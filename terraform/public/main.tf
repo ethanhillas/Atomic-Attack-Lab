@@ -12,7 +12,7 @@ resource "aws_subnet" "public_subnet" {
 
   cidr_block = var.public_subnet_cidr
   availability_zone = "${var.region}a" # ap-southeast-2a
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
 
   tags = {
     Name = "public_subnet-${var.project_name}"
@@ -45,8 +45,8 @@ resource "aws_route_table_association" "route_table_association" {
 }
 
 ## Security Groups
-# OVPN
-resource "aws_security_group" "ovpn" {
+# OVPN public
+resource "aws_security_group" "ovpn_public" {
   name = "ovpn_public_access"
   description = "Required security group rules for ovpn to recieve connections from the internet"
   vpc_id = var.vpc_id
@@ -91,7 +91,36 @@ resource "aws_security_group" "ovpn" {
   }
   
   tags = {
-    Name = "ovpn_sg-${var.project_name}"
+    Name = "ovpn_public_sg-${var.project_name}"
+    project_name = var.project_name
+    managed-by = var.managed_by   
+  }
+}
+
+# OVPN
+resource "aws_security_group" "ovpn_private" {
+  name = "ovpn_private_access"
+  description = "Required security group rules for ovpn clients internally"
+  vpc_id = var.vpc_id
+
+    ingress {
+    protocol  = -1
+    from_port = 0
+    to_port   = 0
+    cidr_blocks = [var.attacker_subnet_cidr, 
+                   var.victim_subnet_cidr]
+  }
+
+  egress {
+    protocol  = -1
+    from_port = 0
+    to_port   = 0
+    cidr_blocks = [var.attacker_subnet_cidr, 
+                   var.victim_subnet_cidr]
+  }
+  
+  tags = {
+    Name = "ovpn_private_sg-${var.project_name}"
     project_name = var.project_name
     managed-by = var.managed_by   
   }
@@ -119,15 +148,27 @@ resource "aws_instance" "ovpn" {
   # access
   key_name = var.public_key.key_name
 
-
   # networking
   source_dest_check = false #required for ovpn server
   subnet_id = aws_subnet.public_subnet.id
   private_ip = var.ovpn_private_ip
-  vpc_security_group_ids = [aws_security_group.ovpn.id]
+  vpc_security_group_ids = [aws_security_group.ovpn_public.id,
+                            aws_security_group.ovpn_private.id]
 
   # storage
 
+  depends_on = [aws_eip.ovpn_eip]
+
+  # provisioner "remote-exec" {
+  #   inline = ["echo booted"]
+
+  #   connection {
+  #     type        = "ssh"
+  #     user        = "ubuntu"
+  #     host        = self.public_ip
+  #     private_key = file(var.private_key_path)
+  #   }
+  # }
 
   tags = {
     Name = "ovpn_instance-${var.project_name}"

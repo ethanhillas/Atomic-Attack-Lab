@@ -1,0 +1,14 @@
+---
+## Domain Users vars
+
+# ansible
+server_ansible_username: ansible
+server_ansible_password: deployment_user_01234
+
+# Domain Administrator
+domain_admin_username: Administrator # Local Admin of DC is promoted to DA
+domain_admin_password: range_master_01234
+
+domain_users: 
+  - { username: 'maveric', password: 'I feel the need3!', groups: ['Remote Desktop Users']}
+  - { username: 'goose', password: 'the need for speed3!', groups: ['Remote Desktop Users']}

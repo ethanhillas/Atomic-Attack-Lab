@@ -3,9 +3,10 @@ TODO
 
 # ansible
 ansible/*/certs
+ansible/*/ovpn_certs/*
+ansible/*/artifacts/*
 
-# terraform
-terraform/*/certs
+# terraform 
 .terraform
 *.tfstate*
 terraform.tfvars

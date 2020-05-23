@@ -1,0 +1,19 @@
+---
+
+# EasyRSA
+- name: easyrsa
+  hosts: ovpn_server
+  become: true
+  vars_files:
+    - ./vars/easy_rsa_vars.yml
+  roles:
+    - role: easyrsa
+
+# OpenVPN
+- name: openvpn
+  hosts: ovpn_server
+  become: true
+  vars_files:
+    - ./vars/ovpn_vars.yml
+  roles:
+    - role: openvpn

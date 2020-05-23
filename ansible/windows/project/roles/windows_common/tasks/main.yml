@@ -1,0 +1,5 @@
+---
+
+- include: set_hostname.yml
+#- include: disable_windows_defender.yml
+#- include: windows_enable_ps_logging.yml 

@@ -19,7 +19,16 @@ variable "igw" {
 variable "public_subnet_cidr" {
 }
 
+variable "attacker_subnet_cidr" {
+}
+
+variable "victim_subnet_cidr" {
+}
+
 variable "public_key" {
+}
+
+variable "private_key_path" {
 }
 
 variable "ovpn_ami_owner" {

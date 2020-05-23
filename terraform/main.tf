@@ -1,6 +1,15 @@
 # Initialise Terraform
 terraform {
   required_version = ">=0.12.0"
+  backend "s3" {
+    # Replace this with your bucket name!
+    bucket         = "adv-emul-terraform-state"
+    key            = "global/s3/terraform.tfstate"
+    region         = "ap-southeast-2"
+    # Replace this with your DynamoDB table name!
+    dynamodb_table = "adv-emul-terraform-state-locks"
+    encrypt        = true
+  }
 }
 
 # Initialise AWS provider
@@ -37,11 +46,14 @@ module "public" {
   igw = module.core.igw
   public_key = module.core.public_key
   public_subnet_cidr = var.public_subnet_cidr
+  attacker_subnet_cidr = var.attacker_subnet_cidr
+  victim_subnet_cidr = var.victim_subnet_cidr
   ovpn_ami_owner = var.ovpn_ami_owner
   ovpn_ami_name = var.ovpn_ami_name
   ovpn_instance_type = var.ovpn_instance_type
   ovpn_private_ip = var.ovpn_private_ip
   trusted_network = var.trusted_network
+  private_key_path = var.private_key_path
 }
 
 module "attacker" {
