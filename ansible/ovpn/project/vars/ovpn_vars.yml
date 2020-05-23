@@ -27,9 +27,6 @@ openvpn_server_options: []
 
 ## MANAGEMENT
 openvpn_management_enable: false
-#openvpn_management_host: 10.0.0.5
-#openvpn_management_port: 943
-#openvpn_management_pass: adv_env_ovpn_management
 
 ## NETWORKING
 openvpn_route_traffic: true
@@ -40,21 +37,20 @@ openvpn_nat_ranges:
 openvpn_nat_address: 10.0.0.5
 openvpn_route_ranges: 
   - 10.0.0.0 255.255.252.0
-#openvpn_dns_servers: []
 
 ## CLIENTS
 openvpn_clients:
   - client1
-  # - client2
-  # - client3
-  # - client4
-  # - client5
-  # - client6
+  - client2
+  - client3
+  - client4
+  - client5
+  - client6
 openvpn_clients_revoke: []
 openvpn_client_options: []
 openvpn_unified_client_profiles: true
 openvpn_download_clients: true
-openvpn_download_dir: ../ovpn_certs/
+openvpn_download_dir: ../../../openvpn_client_certs/
 openvpn_download_extract: false
 openvpn_client_to_client: true
 openvpn_client_to_client_via_ip: false
@@ -72,11 +68,3 @@ openvpn_simple_auth_password: ""
 ## SCRIPTING
 openvpn_script_output_directories:
   - /var/log/openvpn-script-out/
-#openvpn_scripts_dir: "{{ openvpn_etcdir }}/scripts/"
-#openvpn_script_files:
-#  - scripts/client-disconnect.sh.j2
-#openvpn_inline_scripts:
-#  - name: my-up-script.sh
-#    content: |
-#      #!/usr/bin/env
-#      echo 'Up!' >> "/var/up.log"
