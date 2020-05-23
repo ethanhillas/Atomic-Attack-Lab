@@ -5,6 +5,7 @@ TODO
 ansible/*/certs
 ansible/*/ovpn_certs/*
 ansible/*/artifacts/*
+ansible/*/inventory/*
 
 # terraform 
 .terraform
