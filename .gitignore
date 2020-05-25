@@ -3,7 +3,7 @@ TODO
 
 # ansible
 ansible/*/certs
-ansible/*/ovpn_certs/*
+openvpn_client_certs/*
 ansible/*/artifacts/*
 ansible/*/inventory/*
 
@@ -16,3 +16,9 @@ bootstrap-secrets.json
 
 # python
 __pycache__
+
+# venv
+bin 
+lib
+pyvenv.cfg
+include

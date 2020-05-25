@@ -157,18 +157,7 @@ resource "aws_instance" "ovpn" {
 
   # storage
 
-  depends_on = [aws_eip.ovpn_eip]
-
-  # provisioner "remote-exec" {
-  #   inline = ["echo booted"]
-
-  #   connection {
-  #     type        = "ssh"
-  #     user        = "ubuntu"
-  #     host        = self.public_ip
-  #     private_key = file(var.private_key_path)
-  #   }
-  # }
+  #depends_on = [aws_eip.ovpn_eip]
 
   tags = {
     Name = "ovpn_instance-${var.project_name}"

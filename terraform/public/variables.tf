@@ -28,8 +28,8 @@ variable "victim_subnet_cidr" {
 variable "public_key" {
 }
 
-variable "private_key_path" {
-}
+# variable "private_key_path" {
+# }
 
 variable "ovpn_ami_owner" {
 }

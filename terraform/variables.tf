@@ -70,9 +70,9 @@ variable "trusted_network" {
   description = "CIDR of trusted networks allowed to connect to OVPN server"
 }
 
-variable "private_key_path" {
-  description = "Used for remote-exec - TESTING"
-}
+# variable "private_key_path" {
+#   description = "Used for remote-exec - TESTING"
+# }
 
 ## attacker ##
 variable "attacker_subnet_cidr" {

@@ -6,8 +6,8 @@
   * S3 bucket for terraform remote backend (TODO - set this up in a init process)
   * DynamoDB for locks on terraform state (TODO - set this up in a init process)
   * aws cli configured (credential profile set up)
-* Ansible (including ansible-runner)
-* Python3 >= 3.7
-  * see requirements.txt
-* OpenVPN client or OVPN-compatiable client (e.g. Tunnelblick for MacOS)
+* Python3
+  * See requirements.txt for required packages, use a venv
+* OpenVPN client or OVPN-compatiable client (e.g. Tunnelblick for MacOS, apt package for linux)
+  * Connectivity tested on MacOS Catalina 10.15.4 and Kali 2020.2
 

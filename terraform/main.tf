@@ -53,7 +53,7 @@ module "public" {
   ovpn_instance_type = var.ovpn_instance_type
   ovpn_private_ip = var.ovpn_private_ip
   trusted_network = var.trusted_network
-  private_key_path = var.private_key_path
+  #private_key_path = var.private_key_path
 }
 
 module "attacker" {
