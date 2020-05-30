@@ -7,12 +7,23 @@ output "ovpn_server" {
 # OVPN
 resource "local_file" "ovpn_ansible_hosts_file" {
   filename = var.ovpn_ansible_hosts_file
-  #depends_on = [module.public.ovpn_eip_association]
   content = <<-EOT
   [ovpn_server]
   ${module.public.ovpn_eip.public_dns} ansible_host=${module.public.ovpn_eip.public_ip}
 
   [ovpn_server:vars]
+  ansible_user=ubuntu
+  EOT
+}
+
+# Attackers
+resource "local_file" "caldera_ansible_hosts_file" {
+  filename = var.caldera_ansible_hosts_file
+  content = <<-EOT
+  [caldera_server]
+  ${module.attacker.caldera.private_dns} ansible_host=${module.attacker.caldera.private_ip}
+
+  [caldera_server:vars]
   ansible_user=ubuntu
   EOT
 }
@@ -29,4 +40,3 @@ resource "local_file" "windows_ansible_hosts_file" {
   EOT
 }
 
-# Attackers

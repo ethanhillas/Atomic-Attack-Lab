@@ -1,15 +1,15 @@
 ---
 
-- name: features | Installing RSAT AD Admin Center
-  win_feature:
-    name: RSAT-AD-AdminCenter
-    state: present
-
 - name: features | Installing AD Domain Services
   win_feature:
     name: AD-Domain-Services
     include_management_tools: yes
     include_sub_features: yes
+    state: present
+
+- name: features | Installing RSAT AD Admin Center
+  win_feature:
+    name: RSAT-AD-AdminCenter
     state: present
 
 - name: Creating a windows domain
@@ -42,6 +42,8 @@
 - name: sleep for 120 seconds and continue with play
   win_wait_for:
     delay: 120
+    port: 3389
+    timeout: 30
 
 - name: Switch to Domain Admin
   set_fact:

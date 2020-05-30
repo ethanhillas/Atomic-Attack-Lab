@@ -58,6 +58,16 @@ openvpn_ccd: /etc/openvpn/ccd/
 openvpn_ccd_configs:
   - name: client1
     content:
+  - name: client2
+    content:
+  - name: client3
+    content:
+  - name: client4
+    content:
+  - name: client5
+    content:
+  - name: client6
+    content:
 
 ## AUTHENTICATION
 openvpn_use_pam: false

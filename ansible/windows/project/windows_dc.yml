@@ -1,7 +1,7 @@
 ---
 
 - hosts: dc
-  gather_facts: no
+  gather_facts: yes
   vars_files:
     - ./vars/domain_controller.yml
     - ./vars/domain_users.yml

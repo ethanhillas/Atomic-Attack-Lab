@@ -1,7 +1,7 @@
 ---
 
 - hosts: ms
-  gather_facts: no
+  gather_facts: yes
   vars_files: 
     - ./vars/member_server.yml
     - ./vars/domain.yml

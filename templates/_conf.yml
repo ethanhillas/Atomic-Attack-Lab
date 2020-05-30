@@ -1,0 +1,15 @@
+---
+## Project name to tag all instances with
+project_name: 
+
+## AWS credential profile to use
+aws_credential_profile: 
+
+## Path to the ssh public key added to the open vpn server (Default: working_dir)
+ovpn_server_ssh_public_key_path: 
+
+## Path to the ssh public key added to all internal linux servers (Default: working_dir)
+#internal_servers_ssh_public_key_path: 
+
+## Path to the public and private keys used by windows (Default: working_dir)
+windows_rsa_keys_path: 

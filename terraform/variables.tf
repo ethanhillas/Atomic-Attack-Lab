@@ -27,6 +27,10 @@ variable "windows_ansible_hosts_file" {
   description = "relative location of the windows ansible inventory file"
 }
 
+variable "caldera_ansible_hosts_file" {
+  description = "relative location of the caldera ansible inventory file"
+}
+
 #############
 ## Modules ##
 #############

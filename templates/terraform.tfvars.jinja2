@@ -1,0 +1,52 @@
+#############
+## Project ##
+#############
+
+## AWS Provider ##
+aws_credential_profile = "{{ aws_credential_profile }}"
+region = "ap-southeast-2"
+
+
+## Deployment Information ##
+project_name = "{{ project_name }}"
+managed_by = "terraform"
+ovpn_ansible_hosts_file = "../ansible/ovpn/inventory/hosts"
+windows_ansible_hosts_file = "../ansible/windows/inventory/hosts"
+
+#############
+## Modules ##
+#############
+
+## core ##
+vpc_cidr = "10.0.0.0/22"
+public_key_file = "{{ ovpn_server_ssh_public_key_path }}"
+int_public_key_file = "{{ windows_rsa_keys_path }}"
+
+
+## public ## 
+public_subnet_cidr = "10.0.0.0/24"
+ovpn_ami_owner = "099720109477" # Canonical
+ovpn_ami_name = "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server*" # Ubuntu 18.04 LTS
+ovpn_instance_type = "t2.micro"
+ovpn_private_ip = "10.0.0.5"
+trusted_network = "1.43.221.58/32"
+
+
+## attacker ##
+attacker_subnet_cidr = "10.0.1.0/24"
+caldera_ami_owner = "099720109477" # Canonical
+caldera_ami_name = "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server*" # Ubuntu 18.04 LTS
+caldera_instance_type = "t2.micro"
+caldera_private_ip = "10.0.1.5" 
+
+
+## victim ##
+victim_subnet_cidr = "10.0.2.0/24"
+DC_instance_type = "t2.micro"
+MS_instance_type = "t2.micro"
+DC_ip = "10.0.2.5"
+MS_ip = "10.0.2.6"
+DC_ami_owner = "801119661308" # Microsoft
+DC_ami_name = "Windows_Server-2016-English-Full-Base*" # 2016 Server Base
+MS_ami_owner = "801119661308" # Microsoft
+MS_ami_name = "Windows_Server-2016-English-Full-Base*" # 2016 Server Base

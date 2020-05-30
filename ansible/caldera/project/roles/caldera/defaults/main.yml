@@ -1,0 +1,10 @@
+---
+
+# caldera_user: caldera
+# caldera_home: /var/_caldera
+# caldera_rootdir: /var/_caldera/caldera
+
+# plugins:
+#   - ssl
+#   - caltack
+#   - terminal

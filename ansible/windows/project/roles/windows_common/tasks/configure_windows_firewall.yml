@@ -1,0 +1,10 @@
+---
+
+- name: Allow network discovery on windows firewall
+  win_shell: Set-NetFirewallRule -DisplayGroup "Network Discovery" -Profile Any -Enabled True
+
+- name: Allow WMI on windows firewall
+  win_shell: Set-NetFirewallRule -DisplayGroup "Windows Management Instrumentation (WMI)" -Profile Any -Enabled True
+
+- name: Allow file and printer sharing (SMB) on windows firewall
+  win_shell: Set-NetFirewallRule -DisplayGroup "File and Printer Sharing" -Profile Any -Enabled True

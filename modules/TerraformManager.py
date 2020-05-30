@@ -10,7 +10,7 @@ class TerraformManager():
   def init(self): 
     self.terraform.init(no_color=python_terraform.IsFlagged, capture_output='yes')
 
-  def build(self):
+  def apply(self):
     self.terraform.apply(no_color=python_terraform.IsFlagged, capture_output='yes', skip_plan=True)
 
   def destroy(self):
@@ -18,3 +18,8 @@ class TerraformManager():
 
   def refresh(self): 
     self.terraform.cmd("refresh", no_color=python_terraform.IsFlagged, capture_output='yes')
+
+  def recreate(self, resource_list):
+    for instance in resource_list:
+      self.terraform.taint(instance, no_color=python_terraform.IsFlagged, capture_output='yes')
+    self.apply()
