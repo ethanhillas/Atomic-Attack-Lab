@@ -2,12 +2,13 @@ PLAN
 TODO
 
 # ansible
-ansible/*/certs
-openvpn_client_certs/*
-ansible/*/artifacts/*
+#ansible/*/certs
+openvpn_client_certs
+ansible/*/artifacts
 ansible/*/inventory/*
 
 # terraform 
+terraform/utils/certs
 .terraform
 *.tfstate*
 terraform.tfvars
@@ -16,6 +17,7 @@ bootstrap-secrets.json
 
 # python
 __pycache__
+templates
 
 # venv
 bin 

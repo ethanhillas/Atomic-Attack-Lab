@@ -18,6 +18,7 @@ if __name__ == "__main__":
   argparser.add_argument('-m', '--module', help="Specify a module to operate on", choices=['windows','ovpn','caldera'])
 
   args = argparser.parse_args()
+  
   terraform = TerraformManager()
   
   ansible_ovpn = AnsibleManager(private_data_dir='./ansible/ovpn', playbook='ovpn.yml')
