@@ -39,7 +39,7 @@ Install python requirements.
 pip3 install -r requirements.txt
 ```
 
-Create your own certificates for Terraform and Ansible to access and configure your Atomic Attack Lab. The certificates may be located anywhere, but for ease you can create a directory called `certs` in the project folder and write your certs there. You are responsible for appropriately securing your certificates. You must ensure that the keys have the correct privilege (e.g chmod 400 or r--).
+Create your own certificates for Terraform and Ansible to access and configure your Atomic Attack Lab. The certificates may be located anywhere, but for ease you can create a directory called `certs` in the project folder and write your certs there. You are responsible for appropriately securing your certificates. You must ensure that the keys have the correct permission (e.g chmod 400 or r--).
 
 ```
 ## SSH Keys
@@ -60,7 +60,7 @@ Several default options are given and can be customised to suit your deployment.
 * trusted_network: Your current IP, this is used to allow SSH connections to OpenVPN server for installation.
 * *_instance_type: Instance types for AWS EC2 resources
 * terraform_s3_backend_bucket_name: S3 bucket name for Terraform backend (see AWS section)
-* terraform_dynamodb_table_name: DynamoDB table name for Terraform backend (see AWS section)
+* terraform_dynamodb_backend_table_name: DynamoDB table name for Terraform backend (see AWS section)
 * ssh_public_key_file: Path to the ssh public key added to the open vpn server and caldera server
 * ssh_private_key_file: Path to the ssh private key for use by ansible to configure ovpn and caldera
 * win_rsa_public_key_file: Path to the rsa public key used for encrypting secrets
