@@ -39,7 +39,7 @@ Install python requirements.
 pip3 install -r requirements.txt
 ```
 
-Create your own certificates for Terraform and Ansible to access and configure your Atomic Attack Lab. The certificates may be located anywhere, but for ease you can create a directory called `certs` in the project folder and write your certs there. You are responsible for appropriately securing your certificates. You must ensure that the keys have the correct permission (e.g chmod 400 or r--).
+Create your own certificates for Terraform and Ansible to access and configure your Atomic Attack Lab. The certificates may be located anywhere, but for ease of use, you can create a directory called `certs` in the project folder and write your certs there. You are responsible for appropriately securing your certificates. You must ensure that the keys have the correct permission (e.g chmod 400 or r--).
 
 ```
 ## SSH Keys
@@ -57,7 +57,7 @@ Several default options are given and can be customised to suit your deployment.
 
 * project_name: A unique name to tag all AWS resources with
 * aws_credential_profile: The name of your AWS CLI credential profile (see AWS section)
-* trusted_network: Your current IP, this is used to allow SSH connections to OpenVPN server for installation.
+* trusted_network: Your current IP, this is used to allow SSH connections to OpenVPN server for installation
 * *_instance_type: Instance types for AWS EC2 resources
 * terraform_s3_backend_bucket_name: S3 bucket name for Terraform backend (see AWS section)
 * terraform_dynamodb_backend_table_name: DynamoDB table name for Terraform backend (see AWS section)
@@ -101,7 +101,7 @@ python3 atomic_attack_lab.py -c <conf_file>.yml build
 ```
 
 ### Recreate
-The `recreate` command provides a way to destroy and rebuild a specific module of Atomic Attack Lab infrastructure. During use of Atomic Attack Lab you may cause undesirable effects on victim machines and have to revert back a good state. Instead of destroying all infrastructure and rebuilding, Atomic Attack Lab has the ability to rebuild a specific module of the infrastructure. Currently, the modules supported in the `recreate` command are Windows, Caldera, & OVPN.
+The `recreate` command provides a way to destroy and rebuild a specific module of Atomic Attack Lab infrastructure. During use of Atomic Attack Lab you may cause undesirable effects on your resources and have to revert. Instead of destroying all infrastructure and rebuilding, Atomic Attack Lab has the ability to rebuild a specific module of the infrastructure. Currently, the modules supported in the `recreate` command are Windows, Caldera, & OVPN.
 
 ```
 python3 atomic_attack_lab.py -c <conf_file>.yml recreate -m windows|caldera|ovpn
@@ -115,7 +115,7 @@ python3 atomic_attack_lab.py -c <conf_file>.yml configure -m windows|caldera|ovp
 ```
 
 ### Destroy
-The `destroy` command will destory all Atomic Attack Lab infrastructure
+The `destroy` command will destory all Atomic Attack Lab infrastructure.
 
 ```
 python3 atomic_attack_lab.py -c <conf_file>.yml destroy
