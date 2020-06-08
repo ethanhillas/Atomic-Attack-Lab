@@ -5,7 +5,7 @@ project:
 
 ## AWS config
 aws:
-  # AWS credential profile previously set up with aws cli
+  # AWS credential profile set up with aws cli
   aws_credential_profile: 
   # Your IP. This allows SSH connections from your machine to install OpenVPN
   trusted_network: 

@@ -46,11 +46,23 @@ ssh-keygen -t rsa -b 4096 -f /path/to/write/keys
 ssh-keygen -t rsa -b 4096 -m PEM -f /path/to/write/keys
 ```
 
-Initialise Atomic Attack Lab with the built-in initialisation method.
 
-```
-python3 atomic_attack_lab.py -c atomic_attack_lab_conf.yml init
-```
+## Configuration
+Atomic Attack Lab comes with a configuration file that should be customised for your deployment. The `atomic_attack_lab_conf.yml` file is provided as a guide and includes all mandatory configuration items.
+
+Several default options are given and can be customised to suit your deployment. The following options should be updated before running the `init` command.
+
+* project_name: A unique name to tag all AWS resources with
+* aws_credential_profile: The name of your AWS CLI credential profile (see AWS section)
+* trusted_network: Your current IP, this is used to allow SSH connections to OpenVPN server for installation.
+* *_instance_type: Instance types for AWS EC2 resources
+* terraform_s3_backend_bucket_name: S3 bucket name for Terraform backend (see AWS section)
+* terraform_dynamodb_table_name: DynamoDB table name for Terraform backend (see AWS section)
+* ssh_public_key_file: Path to the ssh public key added to the open vpn server and caldera server
+* ssh_private_key_file: Path to the ssh private key for use by ansible to configure ovpn and caldera
+* win_rsa_public_key_file: Path to the rsa public key used for encrypting secrets
+* win_rsa_private_key_file: Path to the rsa private key used for decrypting secrets
+
 
 ## Usage
 The Atomic Attack Lab uses a simple python app to coordinate Terraform and Ansible, allowing you to get up and running with a few simple commands.
@@ -128,5 +140,4 @@ Create a new DynamoDB table with Primary key called 'LockID' as a String type. O
 ```
 - Add capability for modules to be specified for post-setup installation of custom tools (e.g. Splunk/Elastic agents, Sysmon).
 - Shutdown/Startup scripts for reducing costs on AWS from unused resources
-- init and quick-init process
 ```
