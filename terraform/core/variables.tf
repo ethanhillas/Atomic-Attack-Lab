@@ -13,8 +13,8 @@ variable "managed_by" {
 variable "vpc_cidr" {
 }
 
-variable "public_key_file" {
+variable "ssh_public_key_file" {
 }
 
-variable "int_public_key_file"{
+variable "win_rsa_public_key_file"{
 }

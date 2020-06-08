@@ -1,0 +1,46 @@
+---
+project:
+  # Project name to tag all cloud instances with
+  project_name: 
+
+## AWS config
+aws:
+  # AWS credential profile previously set up with aws cli
+  aws_credential_profile: 
+  # Your IP. This allows SSH connections from your machine to install OpenVPN
+  trusted_network: 
+  # AWS instance types
+  ovpn_instance_type: t2.micro
+  caldera_instance_type: t2.micro
+  DC_instance_type: t2.micro
+  MS_instance_type: t2.micro
+  # Name of the S3 bucket created for Terraform backend 
+  terraform_s3_backend_bucket_name: 
+  # Name of DynamoDB table for file locking in Terraform backend
+  terraform_dynamodb_table_name: 
+  ## Don't change these unless you know what you are doing
+  terraform_s3_backend_key: global/s3/terraform.tfstate
+  terraform_s3_backend_region: ap-southeast-2
+
+certs:
+  # Path to the ssh public key added to the open vpn server and caldera server
+  ## Note: due to terraform requirements, the path must be relative to terraform directory or a full path
+  ## e.g. ~/.ssh/your_ssh_key or ../certs/<key file>
+  ssh_public_key_file:  
+
+  # Path to the ssh private key for use by ansible to configure ovpn and caldera
+  ## Note: The path should either be relative to the ansible/*/env directory or a full path
+  ## e.g. ~/.ssh/your_ssh_key or ../certs/<key file>
+  ssh_private_key_file: 
+
+  # Path to the rsa public key used for encrypting secrets (Administrator password)
+  ## Note: due to terraform requirements, the path must be relative to terraform directory or a full path
+  ## e.g. ~/.ssh/your_rsa_key or ../certs/<key file>
+  win_rsa_public_key_file: 
+
+  # Path to the rsa private key used for decrypting secrets (Administrator password)
+  ## Note: due to terraform requirements, the path must be relative to terraform directory or a full path
+  ## e.g. ~/.ssh/your_rsa_key or ../certs/<key file>
+  win_rsa_private_key_file: 
+
+

@@ -28,7 +28,10 @@ variable "attacker_subnet_cidr" {
 variable "ovpn_internal_cidr" {
 }
 
-variable "int_public_key" {
+variable "win_rsa_public_key" {
+}
+
+variable "win_rsa_private_key_file" {
 }
 
 # Windows

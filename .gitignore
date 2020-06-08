@@ -1,9 +1,9 @@
 PLAN
 TODO
 
+.vscode
+
 # ansible
-#ansible/*/certs
-openvpn_client_certs
 ansible/*/artifacts
 ansible/*/inventory/*
 
@@ -12,15 +12,21 @@ terraform/utils/certs
 .terraform
 *.tfstate*
 terraform.tfvars
+*terraform.tfvars_example
 bootstrap-secrets.json
 .DS_Store
 
 # python
 __pycache__
-templates
 
 # venv
 bin 
 lib
 pyvenv.cfg
 include
+venv
+
+# Atomic Attack Lab
+my_conf.yml
+certs/*
+openvpn_client_certs/*

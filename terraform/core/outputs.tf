@@ -6,10 +6,10 @@ output "igw" {
   value = aws_internet_gateway.igw
 }
 
-output "public_key" {
-  value = aws_key_pair.public_key
+output "ssh_public_key" {
+  value = aws_key_pair.ssh_public_key
 }
 
-output "int_public_key" {
-  value = aws_key_pair.int_public_key
+output "win_rsa_public_key" {
+  value = aws_key_pair.win_rsa_public_key
 }

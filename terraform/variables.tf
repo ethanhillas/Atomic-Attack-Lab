@@ -8,6 +8,15 @@ variable "region" {
   description = "Region to deploy all instances"  
 }
 
+# variable "s3_backend_bucket_name" {
+#   description = "Name of the bucket used for the Terraform backend"
+# }
+
+# variable "dynamodb_backend_table_name" {
+#   description = "Name of the dynamodb table used for the Terraform backend"
+# }
+
+
 
 ## Deployment Information ##
 variable "project_name" {
@@ -40,12 +49,12 @@ variable "vpc_cidr" {
   description = "Subnet to be used within VPC"
 }
 
-variable "public_key_file" {
-  description = "File location of public key for external servers (OVPN)"
+variable "ssh_public_key_file" {
+  description = "File location of public key for linux servers"
 }
 
-variable "int_public_key_file" {
-  description = "File location of public key used for internal servers"
+variable "win_rsa_public_key_file" {
+  description = "File location of public key used for encrypting secrets for Windows servers"
 }
 
 
@@ -74,10 +83,6 @@ variable "trusted_network" {
   description = "CIDR of trusted networks allowed to connect to OVPN server"
 }
 
-# variable "private_key_path" {
-#   description = "Used for remote-exec - TESTING"
-# }
-
 ## attacker ##
 variable "attacker_subnet_cidr" {
   description = "Subnet to be used within the attacker subnet"
@@ -103,6 +108,10 @@ variable "caldera_private_ip" {
 ## victim ##
 variable "victim_subnet_cidr" {
   description = "Subnet to be used within the victim subnet"
+}
+
+variable "win_rsa_private_key_file" {
+  description = "File location of private key used for decrypting secrets for Windows servers"
 }
 
 variable "DC_instance_type" {

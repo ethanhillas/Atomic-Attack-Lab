@@ -146,7 +146,7 @@ resource "aws_instance" "ovpn" {
   instance_type = var.ovpn_instance_type
   
   # access
-  key_name = var.public_key.key_name
+  key_name = var.ssh_public_key.key_name
 
   # networking
   source_dest_check = false #required for ovpn server

@@ -1,15 +1,7 @@
 # Initialise Terraform
 terraform {
   required_version = ">=0.12.0"
-  backend "s3" {
-    # Replace this with your bucket name!
-    bucket         = "adv-emul-terraform-state"
-    key            = "global/s3/terraform.tfstate"
-    region         = "ap-southeast-2"
-    # Replace this with your DynamoDB table name!
-    dynamodb_table = "adv-emul-terraform-state-locks"
-    encrypt        = true
-  }
+  backend "s3" {} # this is initialised via the python-terraform module using backend_config
 }
 
 # Initialise AWS provider
@@ -29,8 +21,8 @@ module "core" {
 
   # Module variables
   vpc_cidr = var.vpc_cidr
-  public_key_file = var.public_key_file
-  int_public_key_file = var.int_public_key_file
+  ssh_public_key_file = var.ssh_public_key_file
+  win_rsa_public_key_file = var.win_rsa_public_key_file
 }
 
 module "public" {
@@ -44,7 +36,7 @@ module "public" {
   # Module variables
   vpc_id = module.core.vpc_id
   igw = module.core.igw
-  public_key = module.core.public_key
+  ssh_public_key = module.core.ssh_public_key
   public_subnet_cidr = var.public_subnet_cidr
   attacker_subnet_cidr = var.attacker_subnet_cidr
   victim_subnet_cidr = var.victim_subnet_cidr
@@ -53,7 +45,6 @@ module "public" {
   ovpn_instance_type = var.ovpn_instance_type
   ovpn_private_ip = var.ovpn_private_ip
   trusted_network = var.trusted_network
-  #private_key_path = var.private_key_path
 }
 
 module "attacker" {
@@ -66,7 +57,7 @@ module "attacker" {
 
   # Module variables
   vpc_id = module.core.vpc_id
-  public_key = module.core.public_key
+  ssh_public_key = module.core.ssh_public_key
   igw = module.core.igw
   nat_gateway = module.public.nat_gateway
   attacker_subnet_cidr = var.attacker_subnet_cidr
@@ -88,7 +79,8 @@ module "victim" {
 
   # Module variables
   vpc_id = module.core.vpc_id
-  int_public_key = module.core.int_public_key
+  win_rsa_public_key = module.core.win_rsa_public_key
+  win_rsa_private_key_file = var.win_rsa_private_key_file
   igw = module.core.igw
   nat_gateway = module.public.nat_gateway
   victim_subnet_cidr = var.victim_subnet_cidr

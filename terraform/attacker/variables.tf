@@ -25,7 +25,7 @@ variable "igw" {
 variable "nat_gateway" {
 }
 
-variable "public_key" {
+variable "ssh_public_key" {
 }
 
 variable "ovpn_internal_cidr" {

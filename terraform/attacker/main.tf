@@ -152,7 +152,7 @@ resource "aws_instance" "caldera" {
   instance_type = var.caldera_instance_type
   
   # access
-  key_name = var.public_key.key_name
+  key_name = var.ssh_public_key.key_name
 
   # networking
   subnet_id = aws_subnet.attacker_subnet.id

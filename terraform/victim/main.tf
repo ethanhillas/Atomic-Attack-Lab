@@ -155,7 +155,7 @@ resource "aws_instance" "DC" {
   subnet_id = aws_subnet.victim_subnet.id
   private_ip = var.DC_ip
 
-  key_name = var.int_public_key.key_name
+  key_name = var.win_rsa_public_key.key_name
 
 
   user_data = file("./utils/user_data.txt") # this is actually relative to where terraform is called from
@@ -183,7 +183,7 @@ resource "aws_instance" "MS" {
   subnet_id = aws_subnet.victim_subnet.id
   private_ip = var.MS_ip
 
-  key_name = var.int_public_key.key_name
+  key_name = var.win_rsa_public_key.key_name
 
   user_data = file("./utils/user_data.txt") # this is actually relative to where terraform is called from
   get_password_data = true

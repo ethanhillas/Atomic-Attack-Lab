@@ -33,11 +33,11 @@ resource "aws_internet_gateway" "igw" {
 
 
 ## Key Pair
-resource "aws_key_pair" "public_key" {
-  public_key = file(var.public_key_file)
+resource "aws_key_pair" "ssh_public_key" {
+  public_key = file(var.ssh_public_key_file)
 }
 
-resource "aws_key_pair" "int_public_key" {
-  public_key = file(var.int_public_key_file)
+resource "aws_key_pair" "win_rsa_public_key" {
+  public_key = file(var.win_rsa_public_key_file)
 }
 
