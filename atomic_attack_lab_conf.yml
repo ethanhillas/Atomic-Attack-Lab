@@ -30,7 +30,7 @@ certs:
 
   # Path to the ssh private key for use by ansible to configure ovpn and caldera
   ## Note: The path should either be relative to the ansible/*/env directory or a full path
-  ## e.g. ~/.ssh/your_ssh_key or ../certs/<key file>
+  ## e.g. ~/.ssh/your_ssh_key or ../../../certs/<key file>
   ssh_private_key_file: 
 
   # Path to the rsa public key used for encrypting secrets (Administrator password)
