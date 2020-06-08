@@ -59,8 +59,8 @@ class ConfigurationModel():
 
   def get_init_values(self):
     init_values = {}
-    init_values['bucket'] = self.config['aws']['s3_backend_bucket_name']
-    init_values['dynamodb_table'] = self.config['aws']['dynamodb_backend_table_name']
+    init_values['bucket'] = self.config['aws']['terraform_s3_backend_bucket_name']
+    init_values['dynamodb_table'] = self.config['aws']['terraform_dynamodb_backend_table_name']
     init_values['key'] = self.config['aws']['terraform_s3_backend_key']
     init_values['region'] = self.config['aws']['terraform_s3_backend_region']
     return init_values

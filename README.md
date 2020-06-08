@@ -9,14 +9,17 @@ Another core feature is the ability to isolate the environment from any existing
 
 
 ## Requirements
-* Terraform `>= 0.12` - installed and on path
-* Ansible - installed and on path
-* AWS account 
-* Python3 & virtualenv 
+* Terraform `>= 0.12` - see [Terraform install guide](https://learn.hashicorp.com/terraform/getting-started/install.html)
+* Ansible - see [Ansible install guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+* AWS account & AWS CLI - See AWS section below
+* Python3
 * OpenVPN client or OVPN-compatiable client (e.g. Tunnelblick for MacOS, apt package for linux)
 
+## Support
+Atomic Attack Lab is supported on MacOS, Debian, & Ubuntu.
+
 ## Installation
-Clone the repository to your local machine.
+Setup and install all requirements as detailed above. Clone the repository to your local machine.
 ```  
 git clone https://github.com/ethanhillas/Atomic-Attack-Lab.git
 ```
@@ -36,7 +39,7 @@ Install python requirements.
 pip3 install -r requirements.txt
 ```
 
-Create your own certificates for Terraform and Ansible to access and configure your Atomic Attack Lab.
+Create your own certificates for Terraform and Ansible to access and configure your Atomic Attack Lab. The certificates may be located anywhere, but for ease you can create a directory called `certs` in the project folder and write your certs there. You are responsible for appropriately securing your certificates. You must ensure that the keys have the correct privilege (e.g chmod 400 or r--).
 
 ```
 ## SSH Keys

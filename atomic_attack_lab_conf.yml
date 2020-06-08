@@ -17,7 +17,7 @@ aws:
   # Name of the S3 bucket created for Terraform backend 
   terraform_s3_backend_bucket_name: 
   # Name of DynamoDB table for file locking in Terraform backend
-  terraform_dynamodb_table_name: 
+  terraform_dynamodb_backend_table_name: 
   ## Don't change these unless you know what you are doing
   terraform_s3_backend_key: global/s3/terraform.tfstate
   terraform_s3_backend_region: ap-southeast-2
