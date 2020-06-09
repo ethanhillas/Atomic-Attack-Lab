@@ -7,7 +7,7 @@ server_ansible_password: deployment_user_01234
 
 # Domain Administrator
 domain_admin_username: Administrator # Local Admin of DC is promoted to DA
-domain_admin_password: range_master_01234
+domain_admin_password: Atom1cAtt&ckLab
 
 domain_users: 
   - { username: 'maveric', password: 'I feel the need3!', groups: ['Remote Desktop Users']}
