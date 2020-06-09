@@ -1,4 +1,4 @@
 ---
 # Domain variables
-domain_name: testlab.local
-domain_safe_mode_password: Password123!
+domain_name: atomic-attack.lab
+domain_safe_mode_password: AtomicAtt&ckLab
