@@ -1,4 +1,8 @@
 ---
 
-- name: Add domain users to Remote Desktop Users group
-  win_shell: Add-LocalGroupMember -Group 'Remote Desktop Users' -Member ('TESTLAB\maveric','TESTLAB\goose')
+- name: Add domain group to local Remote Desktop Users group
+  win_group_membership:
+    name: Remote Desktop Users
+    members: 
+      - "Atomic-users@{{ domain_name_short }}"
+    state: present

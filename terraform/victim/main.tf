@@ -2,7 +2,7 @@
 # Route table
 # Route table association
 # SGs
-# Windows Servers
+# Victim Servers
 
 
 # Victim subnet
@@ -136,13 +136,13 @@ data "aws_ami" "DC_ami" {
 }
 
 # ami definition
-data "aws_ami" "MS_ami" {
+data "aws_ami" "Server2016_ami" {
   most_recent = true
-  owners = [var.MS_ami_owner]
+  owners = [var.Server2016_ami_owner]
 
   filter {
     name = "name"
-    values = [var.MS_ami_name]
+    values = [var.Server2016_ami_name]
   }
 }
 
@@ -175,13 +175,13 @@ resource "aws_instance" "DC" {
 }
 
 # MS
-resource "aws_instance" "MS" {
+resource "aws_instance" "Server2016" {
 
-  ami = data.aws_ami.MS_ami.id
-  instance_type = var.MS_instance_type
+  ami = data.aws_ami.Server2016_ami.id
+  instance_type = var.Server2016_instance_type
 
   subnet_id = aws_subnet.victim_subnet.id
-  private_ip = var.MS_ip
+  private_ip = var.Server2016_ip
 
   key_name = var.win_rsa_public_key.key_name
 
@@ -195,7 +195,45 @@ resource "aws_instance" "MS" {
   ]
 
   tags = {
-    Name = "Win-server-MS-${var.project_name}"
+    Name = "Win-server-Server2016-${var.project_name}"
+    project_name = var.project_name
+    managed-by = var.managed_by   
+  }
+}
+
+# ami definition
+data "aws_ami" "Server2012R2_ami" {
+  most_recent = true
+  owners = [var.Server2012R2_ami_owner]
+
+  filter {
+    name = "name"
+    values = [var.Server2012R2_ami_name]
+  }
+}
+
+# Server2012R2
+resource "aws_instance" "Server2012R2" {
+
+  ami = data.aws_ami.Server2012R2_ami.id
+  instance_type = var.Server2012R2_instance_type
+
+  subnet_id = aws_subnet.victim_subnet.id
+  private_ip = var.Server2012R2_ip
+
+  key_name = var.win_rsa_public_key.key_name
+
+  user_data = file("./utils/user_data.txt") # this is actually relative to where terraform is called from
+  get_password_data = true
+
+  vpc_security_group_ids = [
+    aws_security_group.victim_to_attacker_machines.id,
+    aws_security_group.win_victim_machines_internal.id,
+    aws_security_group.win_victim_machines_external.id
+  ]
+
+  tags = {
+    Name = "Win-server-Server2012R2-${var.project_name}"
     project_name = var.project_name
     managed-by = var.managed_by   
   }

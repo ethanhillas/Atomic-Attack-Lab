@@ -1,4 +1,3 @@
-## Inspiration from attack_range https://github.com/splunk/attack_range
 
 import argparse
 from modules.TerraformManager import TerraformManager
@@ -43,11 +42,11 @@ if __name__ == "__main__":
 
   if args.command == 'destroy':
     terraform.destroy()
-    config.cleanup()
+    #config.cleanup()
 
   if args.command == 'recreate':
     if args.module == 'windows':
-      resource_list = ['module.victim.aws_instance.DC','module.victim.aws_instance.MS']
+      resource_list = ['module.victim.aws_instance.DC','module.victim.aws_instance.Server2016', 'module.victim.aws_instance.Server2012R2']
       terraform.recreate(resource_list)
     elif args.module == 'ovpn':
       resource_list = ['module.public.aws_instance.ovpn']

@@ -1,4 +1,5 @@
 ---
 # Domain variables
 domain_name: atomic-attack.lab
+domain_name_short: ATOMIC-ATTACK
 domain_safe_mode_password: AtomicAtt&ckLab
