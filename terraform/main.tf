@@ -89,13 +89,17 @@ module "victim" {
   DC_instance_type = var.DC_instance_type
   Server2016_instance_type = var.Server2016_instance_type
   Server2012R2_instance_type = var.Server2012R2_instance_type
+  Server2019_instance_type = var.Server2019_instance_type
   DC_ip = var.DC_ip
   Server2016_ip = var.Server2016_ip
   Server2012R2_ip = var.Server2012R2_ip
+  Server2019_ip = var.Server2019_ip
   DC_ami_owner = var.DC_ami_owner
   DC_ami_name = var.DC_ami_name
   Server2016_ami_owner = var.Server2016_ami_owner
   Server2016_ami_name = var.Server2016_ami_name
   Server2012R2_ami_owner = var.Server2012R2_ami_owner
   Server2012R2_ami_name = var.Server2012R2_ami_name
+  Server2019_ami_owner = var.Server2019_ami_owner
+  Server2019_ami_name = var.Server2019_ami_name
 }

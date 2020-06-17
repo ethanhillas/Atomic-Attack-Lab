@@ -42,7 +42,9 @@ variable "Server2016_instance_type" {
 }
 
 variable "Server2012R2_instance_type" {
+}
 
+variable "Server2019_instance_type" {
 }
 
 variable "DC_ip" {
@@ -54,6 +56,8 @@ variable "Server2016_ip" {
 variable "Server2012R2_ip" {
 }
 
+variable "Server2019_ip" {
+}
 
 variable "DC_ami_owner" {
 }
@@ -71,4 +75,10 @@ variable "Server2012R2_ami_owner" {
 }
 
 variable "Server2012R2_ami_name" {
+}
+
+variable "Server2019_ami_owner" {
+}
+
+variable "Server2019_ami_name" {
 }

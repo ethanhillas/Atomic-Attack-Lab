@@ -238,3 +238,41 @@ resource "aws_instance" "Server2012R2" {
     managed-by = var.managed_by   
   }
 }
+
+# ami definition
+data "aws_ami" "Server2019_ami" {
+  most_recent = true
+  owners = [var.Server2019_ami_owner]
+
+  filter {
+    name = "name"
+    values = [var.Server2019_ami_name]
+  }
+}
+
+# Server2012R2
+resource "aws_instance" "Server2019" {
+
+  ami = data.aws_ami.Server2019_ami.id
+  instance_type = var.Server2019_instance_type
+
+  subnet_id = aws_subnet.victim_subnet.id
+  private_ip = var.Server2019_ip
+
+  key_name = var.win_rsa_public_key.key_name
+
+  user_data = file("./utils/user_data.txt") # this is actually relative to where terraform is called from
+  get_password_data = true
+
+  vpc_security_group_ids = [
+    aws_security_group.victim_to_attacker_machines.id,
+    aws_security_group.win_victim_machines_internal.id,
+    aws_security_group.win_victim_machines_external.id
+  ]
+
+  tags = {
+    Name = "Win-server-Server2019-${var.project_name}"
+    project_name = var.project_name
+    managed-by = var.managed_by   
+  }
+}

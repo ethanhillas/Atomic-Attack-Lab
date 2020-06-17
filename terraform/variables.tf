@@ -116,6 +116,10 @@ variable "Server2012R2_instance_type" {
   description = "AWS instance type for the Server2012R2 server"
 }
 
+variable "Server2019_instance_type" {
+  description = "AWS instance type for the Server2019 server"
+}
+
 variable "DC_ip" {
   description = "Internal IP address of the domain controller"
 }
@@ -128,6 +132,10 @@ variable "Server2012R2_ip" {
   description = "Internal IP address of the Server2012R2 server"
 }
 
+variable "Server2019_ip" {
+  description = "Internal IP address of the member server"
+}
+
 variable "DC_ami_owner" {
   description = "Owner of the ami to be used for the domain controller"
 }
@@ -137,11 +145,11 @@ variable "DC_ami_name" {
 }
 
 variable "Server2016_ami_owner" {
-  description = "Owner of the ami to be used for the member server"
+  description = "Owner of the ami to be used for the 2016 server"
 }
 
 variable "Server2016_ami_name" {
-  description = "Name of the ami to be used for the member server"
+  description = "Name of the ami to be used for the 2016 server"
 }
 
 variable "Server2012R2_ami_owner" {
@@ -150,4 +158,12 @@ variable "Server2012R2_ami_owner" {
 
 variable "Server2012R2_ami_name" {
   description = "Name of the ami to be used for the Server2012R2 server"
+}
+
+variable "Server2019_ami_owner" {
+  description = "Owner of the ami to be used for the 2019 server"
+}
+
+variable "Server2019_ami_name" {
+  description = "Name of the ami to be used for the 2019 server"
 }
