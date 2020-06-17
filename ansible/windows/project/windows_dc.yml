@@ -4,7 +4,7 @@
   gather_facts: yes
   vars_files:
     - ./vars/domain_controller.yml
-    - ./vars/domain_users.yml
+    - ./vars/domain_users_and_groups.yml
     - ./vars/domain.yml
   roles:
     - windows_common

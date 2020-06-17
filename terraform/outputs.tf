@@ -33,10 +33,12 @@ resource "local_file" "windows_ansible_hosts_file" {
   filename = var.windows_ansible_hosts_file
   content = <<-EOT
   [dc]
-  ${module.victim.DC.private_dns} ansible_host=${module.victim.DC.private_ip} ansible_user=Administrator ansible_password=${module.victim.DC_password}
+  ${module.victim.DC.private_dns} ansible_host=${module.victim.DC.private_ip} ansible_user=Administrator ansible_password="${module.victim.DC_password}" domain_hostname=JARVIS
 
   [ms]
-  ${module.victim.MS.private_dns} ansible_host=${module.victim.MS.private_ip} ansible_user=Administrator ansible_password=${module.victim.MS_password}
+  ${module.victim.Server2016.private_dns} ansible_host=${module.victim.Server2016.private_ip} ansible_user=Administrator ansible_password="${module.victim.Server2016_password}" domain_hostname=Mark-XVI
+  ${module.victim.Server2012R2.private_dns} ansible_host=${module.victim.Server2012R2.private_ip} ansible_user=Administrator ansible_password="${module.victim.Server2012R2_password}" domain_hostname=Mark-XII
+  ${module.victim.Server2019.private_dns} ansible_host=${module.victim.Server2019.private_ip} ansible_user=Administrator ansible_password="${module.victim.Server2019_password}" domain_hostname=Mark-XIX
   EOT
 }
 

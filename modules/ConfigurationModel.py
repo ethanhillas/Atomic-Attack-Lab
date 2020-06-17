@@ -38,7 +38,9 @@ class ConfigurationModel():
           caldera_instance_type = self.config['aws']['caldera_instance_type'],
           win_rsa_private_key_file = self.config['certs']['win_rsa_private_key_file'],
           DC_instance_type = self.config['aws']['DC_instance_type'],
-          MS_instance_type = self.config['aws']['MS_instance_type']
+          Server2016_instance_type = self.config['aws']['Server2016_instance_type'], 
+          Server2012R2_instance_type = self.config['aws']['Server2012R2_instance_type'], 
+          Server2019_instance_type = self.config['aws']['Server2019_instance_type']
     )
     with open(TFVARS_FILE, "w") as outfile:
       outfile.write(rendered_template)

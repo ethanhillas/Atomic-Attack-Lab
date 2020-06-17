@@ -14,7 +14,7 @@ caldera_pkg:
   - libssl-dev
   - acl
   - haproxy
-  - golang
+  #- golang
 
 plugins:
   - atomic

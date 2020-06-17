@@ -24,6 +24,33 @@
     requirements: "{{ caldera_rootdir }}/requirements.txt"
     executable: pip3
 
+- name: Add golang APT repository
+  apt_repository:
+    repo: 'ppa:longsleep/golang-backports'
+
+- name: Install golang
+  apt:
+    name: golang-go
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: git clone caldera terminal
+  git:
+    repo: https://github.com/mitre/terminal.git
+    dest: "{{ caldera_rootdir }}/plugins/terminal"
+    update: false
+    recursive: true
+  become: yes
+
+- name: git clone caldera terminal
+  git:
+    repo: https://github.com/mitre/caltack.git
+    dest: "{{ caldera_rootdir }}/plugins/caltack"
+    update: false
+    recursive: true
+  become: yes
+
 - name: Identify other pip requirements
   find:
     paths: "{{ caldera_rootdir }}/plugins"
@@ -39,9 +66,16 @@
   until: pkg_result is success
   loop: "{{ requirements.files }}"
 
-- name: add plugin to conf
-  lineinfile:
-    path: "{{ caldera_rootdir }}/conf/default.yml"
-    insertafter: 'plugins:'
-    line: "- {{ item }}"
-  with_items: "{{ plugins }}"
+- name: Add AAL conf file
+  template:
+    src: AAL.yml.j2
+    dest: "{{ caldera_rootdir }}/conf/AAL.yml"
+    mode: '0644'
+    backup: no
+
+# - name: add plugin to conf
+#   lineinfile:
+#     path: "{{ caldera_rootdir }}/conf/ALL.yml"
+#     insertafter: 'plugins:'
+#     line: "- {{ item }}"
+#   with_items: "{{ plugins }}"
