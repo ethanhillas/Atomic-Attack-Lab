@@ -58,7 +58,7 @@ Several default options are given and can be customised to suit your deployment.
 
 * project_name: A unique name to tag all AWS resources with
 * aws_credential_profile: The name of your AWS CLI credential profile (see AWS section)
-* trusted_network: Your current IP, this is used to allow SSH connections to OpenVPN server for installation
+* trusted_networks: A list of trusted networks. You can specify one or many CIDR formatted ranges (i.e 8.8.8.8/32, 8.8.4.4/24)
 * *_instance_type: Instance types for AWS EC2 resources
 * terraform_s3_backend_bucket_name: S3 bucket name for Terraform backend (see AWS section)
 * terraform_dynamodb_backend_table_name: DynamoDB table name for Terraform backend (see AWS section)
