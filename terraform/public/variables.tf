@@ -40,5 +40,5 @@ variable "ovpn_instance_type" {
 variable "ovpn_private_ip" {
 }
 
-variable "trusted_network" {
+variable "trusted_networks" {
 }

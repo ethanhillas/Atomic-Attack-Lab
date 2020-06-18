@@ -44,7 +44,7 @@ module "public" {
   ovpn_ami_name = var.ovpn_ami_name
   ovpn_instance_type = var.ovpn_instance_type
   ovpn_private_ip = var.ovpn_private_ip
-  trusted_network = var.trusted_network
+  trusted_networks = var.trusted_networks
 }
 
 module "attacker" {

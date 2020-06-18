@@ -56,23 +56,7 @@ resource "aws_security_group" "ovpn_public" {
     protocol  = "tcp"
     from_port = 22
     to_port   = 22
-    cidr_blocks = [var.trusted_network]
-  }
-
-  ingress {
-    description = "OVPN admin web ui"
-    protocol  = "tcp"
-    from_port = 943
-    to_port   = 943
-    cidr_blocks = [var.trusted_network]
-  }
-
-  ingress {
-    description = "OVPN client webserver"
-    protocol  = "tcp"
-    from_port = 443
-    to_port   = 443
-    cidr_blocks = [var.trusted_network]
+    cidr_blocks = var.trusted_networks
   }
 
   ingress {
@@ -80,7 +64,7 @@ resource "aws_security_group" "ovpn_public" {
     protocol  = "udp"
     from_port = 1194
     to_port   = 1194
-    cidr_blocks = [var.trusted_network]
+    cidr_blocks = var.trusted_networks
   }
 
   egress {

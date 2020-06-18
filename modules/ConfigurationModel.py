@@ -8,6 +8,7 @@ class ConfigurationModel():
     self.conf_file_path = conf_file_path
     with open(self.conf_file_path, 'r') as yaml_file:
       self.config = yaml.safe_load(yaml_file)
+      #self.config = yaml.load(yaml_file)
 
 
   def validate(self):
@@ -28,13 +29,21 @@ class ConfigurationModel():
     TFVARS_TEMPLATE = 'terraform.tfvars.jinja2'
     TFVARS_FILE = './terraform/terraform.tfvars'
     template = templateEnv.get_template(TFVARS_TEMPLATE)
+
+    # Hacky....Hacky.... Need double quoted strings in trusted_networks list for terraform
+    nets_string = "["
+    for nets in self.config['aws']['trusted_networks']:
+      nets_string += '"' + nets + '", '
+    x = nets_string.rfind(',')
+    networks = nets_string[:x] + ']' + nets_string[x+1:]
+
     rendered_template = template.render(
           aws_credential_profile = self.config['aws']['aws_credential_profile'],
           project_name = self.config['project']['project_name'],
           ssh_public_key_file = self.config['certs']['ssh_public_key_file'],
           win_rsa_public_key_file = self.config['certs']['win_rsa_public_key_file'],
           ovpn_instance_type = self.config['aws']['ovpn_instance_type'],
-          trusted_network = self.config['aws']['trusted_network'],
+          trusted_networks = networks,
           caldera_instance_type = self.config['aws']['caldera_instance_type'],
           win_rsa_private_key_file = self.config['certs']['win_rsa_private_key_file'],
           DC_instance_type = self.config['aws']['DC_instance_type'],
