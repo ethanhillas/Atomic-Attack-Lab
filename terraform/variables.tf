@@ -69,7 +69,7 @@ variable "ovpn_private_ip" {
   description = "Private IP address assigned to server in the public subnet"
 }
 
-variable "trusted_network" {
+variable "trusted_networks" {
   description = "CIDR of trusted networks allowed to connect to OVPN server"
 }
 

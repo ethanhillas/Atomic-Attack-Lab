@@ -58,7 +58,7 @@ Several default options are given and can be customised to suit your deployment.
 
 * project_name: A unique name to tag all AWS resources with
 * aws_credential_profile: The name of your AWS CLI credential profile (see AWS section)
-* trusted_network: Your current IP, this is used to allow SSH connections to OpenVPN server for installation
+* trusted_networks: A list of trusted networks. You can specify one or many CIDR formatted ranges (i.e 8.8.8.8/32, 8.8.4.4/24)
 * *_instance_type: Instance types for AWS EC2 resources
 * terraform_s3_backend_bucket_name: S3 bucket name for Terraform backend (see AWS section)
 * terraform_dynamodb_backend_table_name: DynamoDB table name for Terraform backend (see AWS section)
@@ -131,7 +131,7 @@ For the purpose of Atomic Attack Lab, you need to have downloaded and configured
 In your Atomic Attack Lab configuration file, provide the name for the credential profile that has been set up. This is called "default" if you didn't provide a profile name.
 
 ### IAM roles
-Following AWS best practice, you should create an IAM user with least privilege for use by Atomic Attack Lab. The IAM user should have AmazonEC2FullAccess & AmazonS3FullAccess permissions. 
+Following AWS best practice, you should create an IAM user with least privilege for use by Atomic Attack Lab. The IAM user should have AmazonEC2FullAccess, AmazonS3FullAccess, & AmazonDynamoDBFullAccess permissions. 
 
 ### S3/DynamoDB backend
 Terraform is configured to use a remote backend in AWS S3. This means you need to have a S3 bucket and DynamoDB table setup to allow Terraform to read/write state from. The S3 bucket holds state information whilst the DynamoDB table assists with file locking.
@@ -139,6 +139,12 @@ Terraform is configured to use a remote backend in AWS S3. This means you need t
 Create a new S3 bucket, provide a meaningful name and leave default settings. You will need to provide the name of the bucket in the AAL configuration file.
 
 Create a new DynamoDB table with Primary key called 'LockID' as a String type. Once created, go to the capacity page and change the Read/Write capacity mode to 'on-demand' to ensure you are charged only for reads and writes. You will need to provide the name of the table in the AAL configuration file.
+
+## Troubleshooting
+- AWS Profile not being recognised by Terraform:
+  - This is a known bug in Terraform. Sometimes Terraform will pick up the "default" credential stored in the ~/.aws/credential file rather than the one you provide. To fix this, specify an environment variable to override this check (`export AWS_PROFILE=your_cred_profile`)
+- Windows hosts not reachable during ansible configuration phase:
+  - Sometimes the EC2Config or cloud init (UserData) script on windows hosts fails for arbitrary reasons. I have not discovered the cause of this yet, so the only fix is to `recreate` and `configure` the windows module again.
 
 ## TODO
 ```
