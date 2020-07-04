@@ -19,6 +19,11 @@
   become: yes
   register: result
 
+- name: update submodules
+  command: 
+    chdir: "{{ caldera_rootdir }}"
+    cmd: git submodule update --recursive --remote
+
 - name: Install python dependencies
   pip:
     requirements: "{{ caldera_rootdir }}/requirements.txt"
@@ -39,14 +44,6 @@
   git:
     repo: https://github.com/mitre/terminal.git
     dest: "{{ caldera_rootdir }}/plugins/terminal"
-    update: false
-    recursive: true
-  become: yes
-
-- name: git clone caldera terminal
-  git:
-    repo: https://github.com/mitre/caltack.git
-    dest: "{{ caldera_rootdir }}/plugins/caltack"
     update: false
     recursive: true
   become: yes
@@ -73,9 +70,3 @@
     mode: '0644'
     backup: no
 
-# - name: add plugin to conf
-#   lineinfile:
-#     path: "{{ caldera_rootdir }}/conf/ALL.yml"
-#     insertafter: 'plugins:'
-#     line: "- {{ item }}"
-#   with_items: "{{ plugins }}"

@@ -18,9 +18,12 @@ caldera_pkg:
 
 plugins:
   - atomic
+  - access
   - builder
-  - human
-  - mock
   - ssl
+  - terminal
+  - stockpile
+  - manx
+  - sandcat
 
 python: python3

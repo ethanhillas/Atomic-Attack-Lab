@@ -2,4 +2,8 @@
 
 - include: caldera.yml
 
+- include: load_agent_config.yml
+
+- include: import_custom_adversaries.yml
+
 - include: daemonize.yml
