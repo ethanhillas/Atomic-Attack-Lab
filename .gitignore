@@ -7,6 +7,7 @@ TODO
 # ansible
 ansible/*/artifacts
 ansible/*/inventory/*
+ansible/caldera/project/roles/caldera/files
 
 # terraform 
 terraform/utils/certs
