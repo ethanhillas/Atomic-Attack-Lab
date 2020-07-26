@@ -1,0 +1,8 @@
+---
+
+- name: Add agents conf file
+  template:
+    src: agents.yml.j2
+    dest: "{{ caldera_rootdir }}/conf/agents.yml"
+    mode: '0644'
+    backup: no

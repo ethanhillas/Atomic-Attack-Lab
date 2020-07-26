@@ -31,4 +31,4 @@ venv
 # Atomic Attack Lab
 my_conf.yml
 certs/*
-openvpn_client_certs/*
+openvpn_client_certs/client*

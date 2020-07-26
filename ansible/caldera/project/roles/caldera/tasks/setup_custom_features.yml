@@ -1,0 +1,27 @@
+---
+- name: Copy http_content_server.py
+  copy:
+    src: "http_content_server.py"
+    dest: "{{ caldera_rootdir }}"
+
+- name: setup http content server
+  shell: 
+    chdir: "{{ caldera_rootdir }}/plugins/stockpile/payloads"
+    cmd: nohup python3 {{ caldera_rootdir }}/http_content_server.py 8000 > /dev/null 2>&1 &
+  become: yes
+
+- name: setup http file server
+  shell: 
+    chdir: "{{ caldera_rootdir }}/plugins/stockpile/payloads"
+    cmd: nohup python3 -m http.server 8001 > /dev/null 2>&1 &
+  become: yes
+
+- name: Copy listener.sh
+  copy:
+    src: "listener.sh"
+    dest: "/home/ubuntu"
+
+- name: run netcat listener
+  shell:
+    chdir: "/home/ubuntu"
+    cmd: nohup bash listener.sh > /dev/null 2>&1 &

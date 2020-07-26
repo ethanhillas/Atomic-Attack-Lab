@@ -1,25 +1,24 @@
+---
 api_key_blue: BLUEADMIN123
 api_key_red: ADMIN123
 app.contact.gist: API_KEY
 app.contact.html: /weather
-app.contact.http: http://0.0.0.0:8888
-app.contact.tcp: 0.0.0.0:7010
-app.contact.udp: 0.0.0.0:7011
-app.contact.websocket: 0.0.0.0:7012
+app.contact.http: http://10.0.1.5:8888
+app.contact.tcp: 10.0.1.5:7010
+app.contact.udp: 10.0.1.5:7011
+app.contact.websocket: 10.0.1.5:7012
 crypt_salt: REPLACE_WITH_RANDOM_VALUE
 encryption_key: ADMIN123
 exfil_dir: /tmp
-host: 0.0.0.0
+host: 10.0.1.5
 plugins:
-- ssl
-- caltack
-- terminal
-- atomic
-- sandcat
-- stockpile
-- compass
-- manx
-- access
+  - atomic
+  - access
+#  - evals
+  - terminal
+  - stockpile
+  - manx
+  - sandcat
 port: 8888
 reports_dir: /tmp
 requirements:

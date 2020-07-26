@@ -81,6 +81,7 @@ module "victim" {
   vpc_id = module.core.vpc_id
   win_rsa_public_key = module.core.win_rsa_public_key
   win_rsa_private_key_file = var.win_rsa_private_key_file
+  ssh_public_key = module.core.ssh_public_key
   igw = module.core.igw
   nat_gateway = module.public.nat_gateway
   victim_subnet_cidr = var.victim_subnet_cidr
@@ -90,10 +91,14 @@ module "victim" {
   Server2016_instance_type = var.Server2016_instance_type
   Server2012R2_instance_type = var.Server2012R2_instance_type
   Server2019_instance_type = var.Server2019_instance_type
+  RHEL7_1_instance_type = var.RHEL7_1_instance_type
+  Ubuntu1804_instance_type = var.Ubuntu1804_instance_type
   DC_ip = var.DC_ip
   Server2016_ip = var.Server2016_ip
   Server2012R2_ip = var.Server2012R2_ip
   Server2019_ip = var.Server2019_ip
+  RHEL7_1_ip = var.RHEL7_1_ip
+  Ubuntu1804_ip = var.Ubuntu1804_ip
   DC_ami_owner = var.DC_ami_owner
   DC_ami_name = var.DC_ami_name
   Server2016_ami_owner = var.Server2016_ami_owner
@@ -102,4 +107,8 @@ module "victim" {
   Server2012R2_ami_name = var.Server2012R2_ami_name
   Server2019_ami_owner = var.Server2019_ami_owner
   Server2019_ami_name = var.Server2019_ami_name
+  RHEL7_1_ami_owner = var.RHEL7_1_ami_owner
+  RHEL7_1_ami_name = var.RHEL7_1_ami_name
+  Ubuntu1804_ami_owner = var.Ubuntu1804_ami_owner
+  Ubuntu1804_ami_name = var.Ubuntu1804_ami_name
 }

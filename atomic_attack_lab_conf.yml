@@ -13,12 +13,14 @@ aws:
   trusted_networks: 
     - 
   # AWS instance types
-  ovpn_instance_type: t2.micro
-  caldera_instance_type: t2.micro
-  DC_instance_type: t2.micro
-  Server2016_instance_type: t2.micro
-  Server2012R2_instance_type: t2.micro
-  Server2019_instance_type: t2.micro
+  ovpn_instance_type: t2.medium
+  caldera_instance_type: t2.medium
+  DC_instance_type: t2.medium
+  Server2016_instance_type: t2.small
+  Server2012R2_instance_type: t2.small
+  Server2019_instance_type: t2.small
+  RHEL7_1_instance_type: t2.small
+  Ubuntu1804_instance_type: t2.small
   # Name of the S3 bucket created for Terraform backend 
   terraform_s3_backend_bucket_name: 
   # Name of DynamoDB table for file locking in Terraform backend

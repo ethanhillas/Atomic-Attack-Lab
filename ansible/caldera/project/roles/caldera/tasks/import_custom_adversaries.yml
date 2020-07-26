@@ -1,0 +1,17 @@
+---
+
+- name: Copy custom adversaries
+  copy:
+    src: "custom_stockpile/adversaries"
+    dest: "{{ caldera_rootdir }}/plugins/stockpile/data"
+
+- name: Copy custom abilities
+  copy:
+    src: "custom_stockpile/abilities"
+    dest: "{{ caldera_rootdir }}/plugins/stockpile/data"
+
+- name: Copy custom payloads
+  copy:
+    src: "custom_stockpile/payloads"
+    dest: "{{ caldera_rootdir }}/plugins/stockpile/"
+
