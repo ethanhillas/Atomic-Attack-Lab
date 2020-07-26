@@ -29,7 +29,7 @@ ovpn_ami_owner = "099720109477" # Canonical
 ovpn_ami_name = "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server*" # Ubuntu 18.04 LTS
 ovpn_instance_type = "{{ ovpn_instance_type }}"
 ovpn_private_ip = "10.0.0.5"
-trusted_network = "{{ trusted_network }}/32"
+trusted_networks = {{ trusted_networks }}
 
 
 ## attacker ##
@@ -44,10 +44,18 @@ caldera_private_ip = "10.0.1.5"
 victim_subnet_cidr = "10.0.2.0/24"
 win_rsa_private_key_file = "{{ win_rsa_private_key_file }}"
 DC_instance_type = "{{ DC_instance_type }}"
-MS_instance_type = "{{ MS_instance_type }}"
+Server2016_instance_type = "{{ Server2016_instance_type }}"
+Server2012R2_instance_type = "{{ Server2012R2_instance_type }}"
+Server2019_instance_type = "{{ Server2019_instance_type }}"
 DC_ip = "10.0.2.5"
-MS_ip = "10.0.2.6"
+Server2016_ip = "10.0.2.6"
+Server2012R2_ip = "10.0.2.7"
+Server2019_ip = "10.0.2.8"
 DC_ami_owner = "801119661308" # Microsoft
 DC_ami_name = "Windows_Server-2016-English-Full-Base*" # 2016 Server Base
-MS_ami_owner = "801119661308" # Microsoft
-MS_ami_name = "Windows_Server-2016-English-Full-Base*" # 2016 Server Base
+Server2016_ami_owner = "801119661308" # Microsoft
+Server2016_ami_name = "Windows_Server-2016-English-Full-Base*" # 2016 Server Base
+Server2012R2_ami_owner = "801119661308" # Microsoft
+Server2012R2_ami_name = "Windows_Server-2012-R2_RTM-English-64Bit-Base*"
+Server2019_ami_owner = "801119661308" # Microsoft
+Server2019_ami_name = "Windows_Server-2019-English-Core-Base*"

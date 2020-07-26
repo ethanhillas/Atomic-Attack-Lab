@@ -2,7 +2,7 @@
 
 - name: Change the hostname
   win_hostname:
-    name: "{{ hostname }}"
+    name: "{{ domain_hostname }}"
   register: hostname_changed
 
 - name: reboot | Hostname changed

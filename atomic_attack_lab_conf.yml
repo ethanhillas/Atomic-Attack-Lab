@@ -7,13 +7,18 @@ project:
 aws:
   # AWS credential profile set up with aws cli
   aws_credential_profile: 
-  # Your IP. This allows SSH connections from your machine to install OpenVPN
-  trusted_network: 
+  # Your IP. This allows connections from your machine to OpenVPN
+  # Use a list here:
+    # - your ip address
+  trusted_networks: 
+    - 
   # AWS instance types
   ovpn_instance_type: t2.micro
   caldera_instance_type: t2.micro
   DC_instance_type: t2.micro
-  MS_instance_type: t2.micro
+  Server2016_instance_type: t2.micro
+  Server2012R2_instance_type: t2.micro
+  Server2019_instance_type: t2.micro
   # Name of the S3 bucket created for Terraform backend 
   terraform_s3_backend_bucket_name: 
   # Name of DynamoDB table for file locking in Terraform backend

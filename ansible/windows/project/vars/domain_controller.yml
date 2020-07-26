@@ -1,4 +1,4 @@
 ---
 # Domain Controller vars
-hostname: win-dc
+#hostname: win-dc
 

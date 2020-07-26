@@ -10,5 +10,8 @@ domain_admin_username: Administrator # Local Admin of DC is promoted to DA
 domain_admin_password: Atom1cAtt&ckLab
 
 domain_users: 
-  - { username: 'maveric', password: 'I feel the need3!', groups: ['Remote Desktop Users']}
-  - { username: 'goose', password: 'the need for speed3!', groups: ['Remote Desktop Users']}
+  - { username: 'maveric', password: 'I feel the need3!', groups: ['Atomic-users']}
+  - { username: 'goose', password: 'the need for speed3!', groups: ['Atomic-users']}
+
+domain_groups: 
+  - Atomic-users

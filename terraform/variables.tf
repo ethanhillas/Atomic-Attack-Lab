@@ -8,16 +8,6 @@ variable "region" {
   description = "Region to deploy all instances"  
 }
 
-# variable "s3_backend_bucket_name" {
-#   description = "Name of the bucket used for the Terraform backend"
-# }
-
-# variable "dynamodb_backend_table_name" {
-#   description = "Name of the dynamodb table used for the Terraform backend"
-# }
-
-
-
 ## Deployment Information ##
 variable "project_name" {
   description = "A project name tagged to all cloud instances"
@@ -79,7 +69,7 @@ variable "ovpn_private_ip" {
   description = "Private IP address assigned to server in the public subnet"
 }
 
-variable "trusted_network" {
+variable "trusted_networks" {
   description = "CIDR of trusted networks allowed to connect to OVPN server"
 }
 
@@ -118,15 +108,31 @@ variable "DC_instance_type" {
   description = "AWS instance type for the Domain Controller server"
 }
 
-variable "MS_instance_type" {
+variable "Server2016_instance_type" {
   description = "AWS instance type for the member server"
+}
+
+variable "Server2012R2_instance_type" {
+  description = "AWS instance type for the Server2012R2 server"
+}
+
+variable "Server2019_instance_type" {
+  description = "AWS instance type for the Server2019 server"
 }
 
 variable "DC_ip" {
   description = "Internal IP address of the domain controller"
 }
 
-variable "MS_ip" {
+variable "Server2016_ip" {
+  description = "Internal IP address of the member server"
+}
+
+variable "Server2012R2_ip" {
+  description = "Internal IP address of the Server2012R2 server"
+}
+
+variable "Server2019_ip" {
   description = "Internal IP address of the member server"
 }
 
@@ -138,10 +144,26 @@ variable "DC_ami_name" {
   description = "Name of the ami to be used for the domain controller"
 }
 
-variable "MS_ami_owner" {
-  description = "Owner of the ami to be used for the member server"
+variable "Server2016_ami_owner" {
+  description = "Owner of the ami to be used for the 2016 server"
 }
 
-variable "MS_ami_name" {
-  description = "Name of the ami to be used for the member server"
+variable "Server2016_ami_name" {
+  description = "Name of the ami to be used for the 2016 server"
+}
+
+variable "Server2012R2_ami_owner" {
+  description = "Owner of the ami to be used for the Server2012R2 server e.g. Microsoft"
+}
+
+variable "Server2012R2_ami_name" {
+  description = "Name of the ami to be used for the Server2012R2 server"
+}
+
+variable "Server2019_ami_owner" {
+  description = "Owner of the ami to be used for the 2019 server"
+}
+
+variable "Server2019_ami_name" {
+  description = "Name of the ami to be used for the 2019 server"
 }

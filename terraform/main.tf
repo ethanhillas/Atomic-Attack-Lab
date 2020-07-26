@@ -44,7 +44,7 @@ module "public" {
   ovpn_ami_name = var.ovpn_ami_name
   ovpn_instance_type = var.ovpn_instance_type
   ovpn_private_ip = var.ovpn_private_ip
-  trusted_network = var.trusted_network
+  trusted_networks = var.trusted_networks
 }
 
 module "attacker" {
@@ -87,11 +87,19 @@ module "victim" {
   attacker_subnet_cidr = var.attacker_subnet_cidr
   ovpn_internal_cidr = "${module.public.ovpn.private_ip}/32"
   DC_instance_type = var.DC_instance_type
-  MS_instance_type = var.MS_instance_type
+  Server2016_instance_type = var.Server2016_instance_type
+  Server2012R2_instance_type = var.Server2012R2_instance_type
+  Server2019_instance_type = var.Server2019_instance_type
   DC_ip = var.DC_ip
-  MS_ip = var.MS_ip
+  Server2016_ip = var.Server2016_ip
+  Server2012R2_ip = var.Server2012R2_ip
+  Server2019_ip = var.Server2019_ip
   DC_ami_owner = var.DC_ami_owner
   DC_ami_name = var.DC_ami_name
-  MS_ami_owner = var.MS_ami_owner
-  MS_ami_name = var.MS_ami_name
+  Server2016_ami_owner = var.Server2016_ami_owner
+  Server2016_ami_name = var.Server2016_ami_name
+  Server2012R2_ami_owner = var.Server2012R2_ami_owner
+  Server2012R2_ami_name = var.Server2012R2_ami_name
+  Server2019_ami_owner = var.Server2019_ami_owner
+  Server2019_ami_name = var.Server2019_ami_name
 }

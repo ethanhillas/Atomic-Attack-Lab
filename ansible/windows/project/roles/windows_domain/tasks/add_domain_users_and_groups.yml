@@ -1,6 +1,13 @@
 ---
 # Populate domain users
 
+- name: Add domain groups
+  win_domain_group:
+    name: "{{ item }}"
+    scope: global
+    state: present
+  loop: "{{ domain_groups }}"
+
 - name: Add domain users
   win_domain_user:
     name: "{{ item.username }}"
