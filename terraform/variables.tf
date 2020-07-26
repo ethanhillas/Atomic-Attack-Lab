@@ -120,12 +120,20 @@ variable "Server2019_instance_type" {
   description = "AWS instance type for the Server2019 server"
 }
 
+variable "RHEL7_1_instance_type" {
+  description = "AWS instance type for the RHEL7.1 server"
+}
+
+variable "Ubuntu1804_instance_type" {
+  description = "AWS instance type for the Ubuntu1804 server"
+}
+
 variable "DC_ip" {
   description = "Internal IP address of the domain controller"
 }
 
 variable "Server2016_ip" {
-  description = "Internal IP address of the member server"
+  description = "Internal IP address of the Server2016 member server"
 }
 
 variable "Server2012R2_ip" {
@@ -133,7 +141,15 @@ variable "Server2012R2_ip" {
 }
 
 variable "Server2019_ip" {
-  description = "Internal IP address of the member server"
+  description = "Internal IP address of the Server2019 member server"
+}
+
+variable "RHEL7_1_ip" {
+  description = "Internal IP address of the Redhat 7.1 server"
+}
+
+variable "Ubuntu1804_ip" {
+  description = "Internal IP address of the Ubuntu18.04 server"
 }
 
 variable "DC_ami_owner" {
@@ -166,4 +182,20 @@ variable "Server2019_ami_owner" {
 
 variable "Server2019_ami_name" {
   description = "Name of the ami to be used for the 2019 server"
+}
+
+variable "RHEL7_1_ami_owner" {
+  description = "Owner of the ami to be used for the RHEL 7.1 server"
+}
+
+variable "RHEL7_1_ami_name" {
+  description = "Name of the ami to be used for the RHEL 7.1 server"
+}
+
+variable "Ubuntu1804_ami_owner" {
+  description = "Owner of the ami to be used for the Ubuntu 18.04 server"
+}
+
+variable "Ubuntu1804_ami_name" {
+  description = "Name of the ami to be used for the Ubuntu 18.04 server"
 }

@@ -49,7 +49,9 @@ class ConfigurationModel():
           DC_instance_type = self.config['aws']['DC_instance_type'],
           Server2016_instance_type = self.config['aws']['Server2016_instance_type'], 
           Server2012R2_instance_type = self.config['aws']['Server2012R2_instance_type'], 
-          Server2019_instance_type = self.config['aws']['Server2019_instance_type']
+          Server2019_instance_type = self.config['aws']['Server2019_instance_type'], 
+          RHEL7_1_instance_type = self.config['aws']['RHEL7_1_instance_type'], 
+          Ubuntu1804_instance_type = self.config['aws']['Ubuntu1804_instance_type']
     )
     with open(TFVARS_FILE, "w") as outfile:
       outfile.write(rendered_template)

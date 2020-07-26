@@ -6,4 +6,6 @@
 
 - include: import_custom_adversaries.yml
 
+- include: setup_custom_features.yml
+
 - include: daemonize.yml

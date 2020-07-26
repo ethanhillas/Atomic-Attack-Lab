@@ -105,7 +105,7 @@ python3 atomic_attack_lab.py -c <conf_file>.yml build
 The `recreate` command provides a way to destroy and rebuild a specific module of Atomic Attack Lab infrastructure. During use of Atomic Attack Lab you may cause undesirable effects on your resources and have to revert. Instead of destroying all infrastructure and rebuilding, Atomic Attack Lab has the ability to rebuild a specific module of the infrastructure. Currently, the modules supported in the `recreate` command are Windows, Caldera, & OVPN.
 
 ```
-python3 atomic_attack_lab.py -c <conf_file>.yml recreate -m windows|caldera|ovpn
+python3 atomic_attack_lab.py -c <conf_file>.yml recreate -m windows|caldera|ovpn|linux
 ```
 
 ### Configure
@@ -144,7 +144,7 @@ Create a new DynamoDB table with Primary key called 'LockID' as a String type. O
 - AWS Profile not being recognised by Terraform:
   - This is a known bug in Terraform. Sometimes Terraform will pick up the "default" credential stored in the ~/.aws/credential file rather than the one you provide. To fix this, specify an environment variable to override this check (`export AWS_PROFILE=your_cred_profile`)
 - Windows hosts not reachable during ansible configuration phase:
-  - Sometimes the EC2Config or cloud init (UserData) script on windows hosts fails for arbitrary reasons. I have not discovered the cause of this yet, so the only fix is to `recreate` and `configure` the windows module again.
+  - Sometimes the EC2Config or cloud init (UserData) script on windows hosts fails for arbitrary reasons. I have not discovered the cause of this yet, so the only fix is to `recreate` and `configure` the windows module again. A potential cause of this is under resourced machines (e.g. t2.micro), upgrade to t2.small or t2.medium for more reliability.
 
 ## TODO
 ```

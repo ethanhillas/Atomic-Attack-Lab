@@ -3,6 +3,7 @@
 caldera_version: 2.7.0
 caldera_rootdir: /etc/caldera
 caldera_home: /etc/caldera
+attack_evals_dir: /etc/attack_evals
 caldera_pkg:
   - python3
   - python3-dev
@@ -14,7 +15,6 @@ caldera_pkg:
   - libssl-dev
   - acl
   - haproxy
-  #- golang
 
 plugins:
   - atomic

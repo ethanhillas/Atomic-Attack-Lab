@@ -174,7 +174,7 @@ resource "aws_instance" "DC" {
   }
 }
 
-# MS
+# Server2016
 resource "aws_instance" "Server2016" {
 
   ami = data.aws_ami.Server2016_ami.id
@@ -272,6 +272,78 @@ resource "aws_instance" "Server2019" {
 
   tags = {
     Name = "Win-server-Server2019-${var.project_name}"
+    project_name = var.project_name
+    managed-by = var.managed_by   
+  }
+}
+
+## Linux Servers
+
+# ami definition
+data "aws_ami" "RHEL7_1_ami" {
+  most_recent = true
+  owners = [var.RHEL7_1_ami_owner]
+
+  filter {
+    name = "name"
+    values = [var.RHEL7_1_ami_name]
+  }
+}
+
+# Red Hat 7.1
+resource "aws_instance" "RHEL7_1" {
+
+  ami = data.aws_ami.RHEL7_1_ami.id
+  instance_type = var.RHEL7_1_instance_type
+
+  subnet_id = aws_subnet.victim_subnet.id
+  private_ip = var.RHEL7_1_ip
+
+  key_name = var.ssh_public_key.key_name
+
+  vpc_security_group_ids = [
+    aws_security_group.victim_to_attacker_machines.id,
+    aws_security_group.win_victim_machines_internal.id,
+    aws_security_group.win_victim_machines_external.id
+  ]
+
+  tags = {
+    Name = "Red_Hat_Server-RHEL7_1-${var.project_name}"
+    project_name = var.project_name
+    managed-by = var.managed_by   
+  }
+}
+
+# ami definition
+data "aws_ami" "Ubuntu1804_ami" {
+  most_recent = true
+  owners = [var.Ubuntu1804_ami_owner]
+
+  filter {
+    name = "name"
+    values = [var.Ubuntu1804_ami_name]
+  }
+}
+
+# Ubuntu18.04
+resource "aws_instance" "Ubuntu1804" {
+
+  ami = data.aws_ami.Ubuntu1804_ami.id
+  instance_type = var.Ubuntu1804_instance_type
+
+  subnet_id = aws_subnet.victim_subnet.id
+  private_ip = var.Ubuntu1804_ip
+
+  key_name = var.ssh_public_key.key_name
+
+  vpc_security_group_ids = [
+    aws_security_group.victim_to_attacker_machines.id,
+    aws_security_group.win_victim_machines_internal.id,
+    aws_security_group.win_victim_machines_external.id
+  ]
+
+  tags = {
+    Name = "Ubuntu_Server-Ubuntu1804-${var.project_name}"
     project_name = var.project_name
     managed-by = var.managed_by   
   }

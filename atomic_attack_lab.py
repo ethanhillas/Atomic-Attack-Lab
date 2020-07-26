@@ -14,7 +14,7 @@ if __name__ == "__main__":
     
   argparser = argparse.ArgumentParser()
   argparser.add_argument("command", choices=['init','build','destroy','recreate','configure'])
-  argparser.add_argument('-m', '--module', help="Specify a module to operate on", choices=['windows','ovpn','caldera'])
+  argparser.add_argument('-m', '--module', help="Specify a module to operate on", choices=['windows','ovpn','caldera', 'linux'])
   argparser.add_argument('-c', '--configuration-file', required=True, help='Specify the path to the yaml based configuration file for Atomic Attack Lab')
 
   args = argparser.parse_args()
@@ -30,6 +30,7 @@ if __name__ == "__main__":
   if args.command == 'init':
     config.validate()
     terraform.init(config.get_init_values())
+    config.render_templates()
 
   if args.command == 'build':
     config.validate()
@@ -57,6 +58,10 @@ if __name__ == "__main__":
     elif args.module == 'caldera':
       resource_list = ['module.attacker.aws_instance.caldera']
       terraform.recreate(resource_list)
+    elif args.module == 'linux':
+      resource_list = ['module.victim.aws_instance.RHEL7_1',
+                       'module.victim.aws_instance.Ubuntu1804']
+      terraform.recreate(resource_list)
     else:
       print("Provide a module to recreate (-m / --module")
 
@@ -67,5 +72,7 @@ if __name__ == "__main__":
       ansible_ovpn.run()
     elif args.module == 'caldera':
       ansible_caldera.run()
+    elif args.module == 'linux':
+      print("Nothing to configure in the linux module")
     else:
-      print("Provide a module to recreate (-m / --module)")
+      print("Provide a module to configure (-m / --module)")

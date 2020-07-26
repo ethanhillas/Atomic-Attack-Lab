@@ -2,7 +2,6 @@ output "ovpn_server" {
   value = format("OpenVPN server\nPublic IP: %s\nPublic DNS: %s", module.public.ovpn_eip.public_dns, module.public.ovpn_eip.public_ip)
 }
 
-
 ## Local file provisioners for ansible hosts files
 # OVPN
 resource "local_file" "ovpn_ansible_hosts_file" {
