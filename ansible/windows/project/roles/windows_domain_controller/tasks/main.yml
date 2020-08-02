@@ -3,3 +3,4 @@
 
 - include: set_ansible_user.yml
 - include: install_domain_controller.yml
+- include: install_spn_user.yml

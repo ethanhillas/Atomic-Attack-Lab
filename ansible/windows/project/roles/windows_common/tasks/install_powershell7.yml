@@ -1,0 +1,10 @@
+---
+
+- name: fetch Powershell 7 msi package
+  win_get_url:
+    url: https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/PowerShell-7.0.3-win-x64.msi
+    dest: C:\Users\Administrator\PowerShell-7.0.3-win-x64.msi
+
+- name: install MSI package
+  win_package:
+    path: C:\Users\Administrator\PowerShell-7.0.3-win-x64.msi

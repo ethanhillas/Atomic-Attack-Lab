@@ -16,15 +16,20 @@ if __name__ == "__main__":
   argparser.add_argument("command", choices=['init','build','destroy','recreate','configure'])
   argparser.add_argument('-m', '--module', help="Specify a module to operate on", choices=['windows','ovpn','caldera', 'linux'])
   argparser.add_argument('-c', '--configuration-file', required=True, help='Specify the path to the yaml based configuration file for Atomic Attack Lab')
+  argparser.add_argument('-v', '--verbosity', action='store_true', help='Indicate if you want extra output from Ansible')
 
   args = argparser.parse_args()
   
   config = ConfigurationModel(args.configuration_file)
   terraform = TerraformManager()
   
-  ansible_ovpn = AnsibleManager(private_data_dir='./ansible/ovpn', playbook='ovpn.yml')
-  ansible_caldera = AnsibleManager(private_data_dir='./ansible/caldera', playbook='caldera.yml')
-  ansible_windows = AnsibleManager(private_data_dir='./ansible/windows', playbook='windows_build_env.yml')
+  if args.verbosity is True:
+    verbosity = 3
+  else:
+    verbosity = 0
+  ansible_ovpn = AnsibleManager(private_data_dir='./ansible/ovpn', playbook='ovpn.yml', verbosity=verbosity)
+  ansible_caldera = AnsibleManager(private_data_dir='./ansible/caldera', playbook='caldera.yml', verbosity=verbosity)
+  ansible_windows = AnsibleManager(private_data_dir='./ansible/windows', playbook='windows_build_env.yml', verbosity=verbosity)
 
   
   if args.command == 'init':
@@ -43,7 +48,6 @@ if __name__ == "__main__":
 
   if args.command == 'destroy':
     terraform.destroy()
-    #config.cleanup()
 
   if args.command == 'recreate':
     if args.module == 'windows':
