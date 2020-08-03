@@ -1,0 +1,13 @@
+---
+
+- name: Add spn user for kerberoasting
+  win_domain_user:
+    name: "Iceman"
+    firstname: "Tom"
+    surname: "Kazansky"
+    password: "You can be my wingman anytime3!"
+
+- name:
+  win_shell: setspn -a JARVIS/Iceman.atomic-attack.lab:60111 atomic-attack\Iceman
+  args:
+    executable: cmd

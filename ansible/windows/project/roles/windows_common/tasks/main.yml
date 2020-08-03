@@ -2,5 +2,6 @@
 
 - include: disable_windows_defender.yml
 - include: configure_windows_firewall.yml
+- include: install_powershell7.yml
 - include: set_hostname.yml
 #- include: windows_enable_ps_logging.yml 
