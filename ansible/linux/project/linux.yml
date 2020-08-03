@@ -1,0 +1,7 @@
+# Linux customisation
+- name: Linux
+  hosts: linux_servers
+  gather_facts: yes
+  become: yes
+  roles:
+#    - powershell7
