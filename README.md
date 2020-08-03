@@ -122,6 +122,9 @@ The `destroy` command will destory all Atomic Attack Lab infrastructure.
 python3 atomic_attack_lab.py -c <conf_file>.yml destroy
 ```
 
+### Verbosity
+The `-v / --verbosity` option can be specified to provide additional logging from ansible. 
+
 ## AWS
 ### AWS CLI
 For Terraform to access your AWS account and build the infrastructure, it requires access to an AWS credential profile. The credential profile is part of the AWS CLI, and is described in detail at [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html).
