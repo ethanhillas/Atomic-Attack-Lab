@@ -6,3 +6,10 @@
     members: 
       - "Atomic-users@{{ domain_name_short }}"
     state: present
+
+- name: Add local administrator
+  win_group_membership:
+    name: Administrators
+    members: 
+      - "maveric@{{ domain_name_short }}"
+    state: present
