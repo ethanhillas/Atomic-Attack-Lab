@@ -30,6 +30,10 @@ variable "caldera_ansible_hosts_file" {
   description = "relative location of the caldera ansible inventory file"
 }
 
+variable "linux_ansible_hosts_file" {
+  description = "relative location of the linux ansible inventory file"
+}
+
 #############
 ## Modules ##
 #############

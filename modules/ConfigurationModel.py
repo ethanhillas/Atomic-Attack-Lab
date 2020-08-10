@@ -59,7 +59,7 @@ class ConfigurationModel():
 
     ## ansible-runner extravars file (caldera & ovpn)
     EXTRAVARS_TEMPLATE = 'extravars_linux.jinja2'
-    EXTRAVARS_FILES = ['./ansible/ovpn/env/extravars', './ansible/caldera/env/extravars']
+    EXTRAVARS_FILES = ['./ansible/ovpn/env/extravars', './ansible/caldera/env/extravars', './ansible/linux/env/extravars']
     template = templateEnv.get_template(EXTRAVARS_TEMPLATE)
     rendered_template = template.render(
               ssh_private_key_file = self.config['certs']['ssh_private_key_file']

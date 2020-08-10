@@ -41,3 +41,13 @@ resource "local_file" "windows_ansible_hosts_file" {
   EOT
 }
 
+resource "local_file" "linux_ansible_hosts_file" {
+  filename = var.linux_ansible_hosts_file
+  content = <<-EOT
+  [linux_servers]
+  ${module.victim.RHEL7_1.private_ip} ansible_user=ec2-user 
+  ${module.victim.Ubuntu1804.private_ip} ansible_user=ubuntu 
+
+  EOT
+}
+

@@ -27,10 +27,11 @@ if __name__ == "__main__":
     verbosity = 3
   else:
     verbosity = 0
+
   ansible_ovpn = AnsibleManager(private_data_dir='./ansible/ovpn', playbook='ovpn.yml', verbosity=verbosity)
   ansible_caldera = AnsibleManager(private_data_dir='./ansible/caldera', playbook='caldera.yml', verbosity=verbosity)
   ansible_windows = AnsibleManager(private_data_dir='./ansible/windows', playbook='windows_build_env.yml', verbosity=verbosity)
-
+  ansible_linux = AnsibleManager(private_data_dir='./ansible/linux', playbook='linux.yml', verbosity=verbosity)
   
   if args.command == 'init':
     config.validate()
@@ -43,6 +44,7 @@ if __name__ == "__main__":
     terraform.apply()
     ansible_ovpn.run()
     wait_for_ovpn_connection()
+    ansible_linux.run()
     ansible_caldera.run()
     ansible_windows.run()
 
@@ -67,7 +69,7 @@ if __name__ == "__main__":
                        'module.victim.aws_instance.Ubuntu1804']
       terraform.recreate(resource_list)
     else:
-      print("Provide a module to recreate (-m / --module")
+      print("Provide a module to recreate (-m / --module)")
 
   if args.command == 'configure':
     if args.module == 'windows':
@@ -77,6 +79,6 @@ if __name__ == "__main__":
     elif args.module == 'caldera':
       ansible_caldera.run()
     elif args.module == 'linux':
-      print("Nothing to configure in the linux module")
+      ansible_linux.run()
     else:
       print("Provide a module to configure (-m / --module)")
