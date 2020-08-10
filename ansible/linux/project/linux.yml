@@ -4,4 +4,4 @@
   gather_facts: yes
   become: yes
   roles:
-#    - powershell7
+    - debug
