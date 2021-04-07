@@ -1,4 +1,4 @@
-ansible==2.9.9
+ansible==2.10.0
 ansible-runner==1.4.6
 certifi==2019.11.28
 cffi==1.14.0
