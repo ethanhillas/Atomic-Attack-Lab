@@ -1,5 +1,5 @@
 ansible==4.2.0
-ansible-runner==1.4.6
+ansible-runner==2.1.1
 certifi==2019.11.28
 cffi==1.14.0
 chardet==3.0.4
